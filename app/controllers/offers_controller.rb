@@ -1,5 +1,4 @@
 class OffersController < ApplicationController
-
   def index
     @offers = Offer.all
   end
@@ -28,8 +27,7 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find(params[:id])
-    @offer.update(params_require)
-    if @offer.save
+    if @offer.update(params_require)
       redirect_to offer_path(@offer)
     else
       render :new, status: :unprocessable_entity
@@ -47,5 +45,4 @@ class OffersController < ApplicationController
   def params_require
     params.require(:offer).permit(:localisation, :price, :summary, :user_id)
   end
-
 end
