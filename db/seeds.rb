@@ -1,32 +1,35 @@
 require "faker"
 
-hobbits = {
-  frodo: {
+Offer.destroy_all
+User.destroy_all
+
+hobbits = [
+  {
     first_name: "Frodo",
     last_name: "Baggins"
   },
-  sam: {
+  {
     first_name: "Samwise",
     last_name: "Gamgee"
   },
-  merry: {
+  {
     first_name: "Meriadoc",
     last_name: "Brandybuck"
   },
-  pippin: {
+  {
     first_name: "Peregrin",
     last_name: "Took"
   }
-}
+]
 
-hobbits.each do |_k, v|
-  User.new(
-    first_name: v[:first_name],
-    last_name: v[:first_name],
-    email: Faker::Internet.email,
-    password: "secret",
-    role: "Hobbit"
+hobbits.each do |hobbit|
+  user = User.new(
+    first_name: hobbit[:first_name],
+    last_name: hobbit[:first_name],
+    password: "secret"
   )
+  user.email = Faker::Internet.email(name: user.first_name, domain: user.last_name)
+  user.save
 end
 
 User.all.each do |hobbit|
@@ -34,7 +37,7 @@ User.all.each do |hobbit|
   10.times do
     summary << "#{Faker::Fantasy::Tolkien.poem}\n"
   end
-  Offer.new(
+  Offer.create(
     localisation: Faker::Movies::LordOfTheRings.location,
     price: rand(20..100),
     summary: summary,
