@@ -13,6 +13,7 @@ class ReservationsController < ApplicationController
     @offer = Offer.find(params[:offer_id])
     @reservation = Reservation.new(reservation_params)
     @reservation.offer = @offer
+    @reservation.user = current_user
     if @reservation.save!
       redirect_to reservation_path(@reservation)
     else
@@ -32,6 +33,7 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+
     @reservation.destroy
     redirect_to offers_path, status: :see_other
   end
@@ -39,7 +41,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date, :total_price)
+    params.require(:reservation).permit(:start_date, :end_date, :total_price, :offer_id)
   end
 
   def set_reservation
