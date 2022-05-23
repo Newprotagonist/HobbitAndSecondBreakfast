@@ -1,13 +1,12 @@
-<p>
-<%= @offer.localisation %>
-
-<%= @offer.price %>
-
-<%= @offer.summary %>
-<%# <%= @offer.users.email %>
-
-</p>
-
-<%= link_to "Edit this offer", edit_offer_path(@offer) %>
-<p><%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %></p>
-<% console %>
+<div class="container m-3">
+  <h1><%= @offer.localisation %></h1>
+  <p> 💰 <%= @offer.price %> golds</p>
+  <p><%= @offer.summary %></p>
+  <%# <%= @offer.users.email %>
+  <% if  @user == @offer.user %>
+    <div class="btn btn-primary"><%= link_to "Edit this offer", edit_offer_path(@offer) %></div>
+    <div class="btn btn-primary"><%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %></div>
+  <% else %>
+    <div class="btn btn-primary"><%= link_to "Reserve", new_offer_reservation_path(@offer) %></div>
+  <% end %>
+</div>
