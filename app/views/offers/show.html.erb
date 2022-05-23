@@ -4,9 +4,10 @@
   <p><%= @offer.summary %></p>
   <%# <%= @offer.users.email %>
   <% if  @user == @offer.user %>
-    <div class="btn btn-primary"><%= link_to "Edit this offer", edit_offer_path(@offer) %></div>
-    <div class="btn btn-primary"><%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %></div>
+    <%= link_to "Edit this offer", edit_offer_path(@offer), class: "btn btn-primary" %>
+    <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
+    class: "btn btn-danger" %>
   <% else %>
-    <div class="btn btn-primary"><%= link_to "Reserve", new_offer_reservation_path(@offer) %></div>
+    <%= link_to "Reserve", new_offer_reservation_path(@offer), class: "btn btn-primary" %>
   <% end %>
 </div>
