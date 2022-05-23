@@ -25,7 +25,7 @@ hobbits = [
 hobbits.each do |hobbit|
   user = User.new(
     first_name: hobbit[:first_name],
-    last_name: hobbit[:first_name],
+    last_name: hobbit[:last_name],
     password: "secret"
   )
   user.email = Faker::Internet.email(name: user.first_name, domain: user.last_name)
