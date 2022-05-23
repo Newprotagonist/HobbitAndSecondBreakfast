@@ -22,10 +22,20 @@ hobbits.each do |_k, v|
     first_name: v[:first_name],
     last_name: v[:first_name],
     email: Faker::Internet.email,
+    password: "secret",
     role: "Hobbit"
   )
 end
 
-# User.all.each do |hobbit|
-
-# end
+User.all.each do |hobbit|
+  summary = ""
+  10.times do
+    summary << "#{Faker::Fantasy::Tolkien.poem}\n"
+  end
+  Offer.new(
+    localisation: Faker::Movies::LordOfTheRings.location,
+    price: rand(20..100),
+    summary: summary,
+    user: hobbit
+  )
+end
