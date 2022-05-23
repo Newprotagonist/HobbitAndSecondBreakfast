@@ -1,0 +1,10 @@
+<div class="form-control">
+  <%= simple_form_for(@offer) do |f| %>
+    <%= f.input :localisation %>
+    <%= f.input :price %>
+    <%= f.input :summary %>
+    <%# In case we will allow to upload photos: %>
+    <%# <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>

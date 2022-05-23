@@ -1,0 +1,13 @@
+<p>
+<%= @offer.localisation %>
+
+<%= @offer.price %>
+
+<%= @offer.summary %>
+<%# <%= @offer.users.email %>
+
+</p>
+
+<%= link_to "Edit this offer", edit_offer_path(@offer) %>
+<p><%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"} %></p>
+<% console %>
