@@ -1,0 +1,22 @@
+<h1>Choose your Hobbit !</h1>
+
+<div>
+
+  <% @offers.each do |offer| %>
+    <div>
+      <h3><%= link_to "#{offer.user[:first_name]} #{offer.user[:last_name]}", offer_path(offer) %></h3> <p><%=link_to "Choose him!", new_offer_reservation_path(offer), class:"btn btn-primary"%></p>
+    </div>
+
+    <div>
+     <p> 📍 <%= offer.localisation %></p>
+    </div>
+
+    <div>
+      <p> 💰 <%= offer.price %> golds</p>
+    </div>
+
+    <div>
+      <p><%= offer.summary %></p>
+    </div>
+  <% end %>
+</div>
