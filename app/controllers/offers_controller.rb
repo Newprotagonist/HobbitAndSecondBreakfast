@@ -5,12 +5,11 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
-    @user = User.find(params[:user_id])
   end
 
   def create
     @offer = Offer.new(params_require)
-    @user = User.find(params[:user_id])
+    @offer.user = current_user
     if @offer.save
       redirect_to offer_path(@offer)
     else
