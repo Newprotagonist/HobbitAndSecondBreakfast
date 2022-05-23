@@ -1,5 +1,7 @@
-<%= simple_form_for([@offer, @reservation], method: :post, url: offer_reservations_path(@offer)) do |form| %>
-  <%= form.date_field :start_date, min: Date.today %>
-  <%= form.date_field :end_date, min: Date.tomorrow %>
+<%= simple_form_for([@offer, @reservation], method: :post, url: offer_reservations_path(@offer), data: { "controller": "total-price"}) do |form| %>
+  <%= form.date_field :start_date, min: Date.today, data: {"total-price-target": "start", "action": "total-price#calc" } %>
+  <%= form.date_field :end_date, min: Date.tomorrow, data: {"total-price-target": "end", "action": "total-price#calc" } %>
+  <span>Price per day: </span><span data-total-price-target="daily"><%= @offer.price %></span>
+  <span>Total price: </span><span data-total-price-target="total"></span>
   <%= form.button :submit, class: "btn btn-outline-primary" %>
 <% end %>

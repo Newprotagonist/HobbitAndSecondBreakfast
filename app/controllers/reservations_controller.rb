@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.offer = @offer
     @reservation.user = current_user
+    @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
     if @reservation.save!
       redirect_to reservation_path(@reservation)
     else
@@ -22,9 +23,11 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+    @offer = @reservation.offer
   end
 
   def update
+    @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
     if @reservation.save
       redirect_to reservation_path(@reservation)
     else
@@ -33,7 +36,6 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-
     @reservation.destroy
     redirect_to offers_path, status: :see_other
   end
@@ -41,7 +43,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date, :total_price, :offer_id)
+    params.require(:reservation).permit(:start_date, :end_date)
   end
 
   def set_reservation
