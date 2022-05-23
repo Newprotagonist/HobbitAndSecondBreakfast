@@ -1,3 +1,5 @@
+require "faker"
+
 hobbits = {
   frodo: {
     first_name: "Frodo",

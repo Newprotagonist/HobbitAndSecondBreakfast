@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_23_104341) do
     t.bigint "offer_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.float "total_price"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["offer_id"], name: "index_reservations_on_offer_id"
