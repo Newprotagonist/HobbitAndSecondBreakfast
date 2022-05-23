@@ -4,6 +4,8 @@
 <%= @offer.price %>
 
 <%= @offer.summary %>
-<%= @offer.users.email %>
+<%# <%= @offer.users.email %>
 
 </p>
+
+<%= link_to "Edit this offer", edit_offer_path(@offer) %>
