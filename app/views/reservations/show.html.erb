@@ -1,0 +1,9 @@
+<h1>Reservations#show</h1>
+<p>Find me in app/views/reservations/show.html.erb</p>
+<ul>
+  <li>Total price: <%= @reservation.total_price %></li>
+  <li>Start date: <%= @reservation.start_date %></li>
+  <li>End date: <%= @reservation.end_date %></li>
+</ul>
+<%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
+<%= link_to "Cancel reservation", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-danger delete" %>
