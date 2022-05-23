@@ -1,0 +1,5 @@
+<%= simple_form_for([@offer, @reservation], method: :post, url: offer_reservations_path(@offer)) do |form| %>
+  <%= form.date_field :start_date, min: Date.today %>
+  <%= form.date_field :end_date, min: Date.tomorrow %>
+  <%= form.button :submit, class: "btn btn-outline-primary" %>
+<% end %>
