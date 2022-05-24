@@ -1,42 +1,47 @@
+<div class="container mt-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-12 col-md-8 card">
-
-      <% if !@offer.photos.empty? %>
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <% @offer.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item <%= "active" if index == 0 %>">
-                <div class="d-flex justify-content-center w-100"><%= cl_image_tag photo.key, width: 600, height: 300, crop: :fill %></div>
-              </div>
-            <% end %>
+    <div class="col-12 col-md-9">
+      <div>
+        <% if !@offer.photos.empty? %>
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% @offer.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= "active" if index == 0 %>">
+                  <div class="d-flex justify-content-center w-100"><%= cl_image_tag photo.key, width: 600, height: 300, crop: :fill %></div>
+                </div>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      <% end %>
-
-      <h1 class="border-bottom"><%= @offer.user.first_name %> <%= @offer.user.last_name %></h1>
-      <p> 📍 <%= @offer.localisation %></p>
-      <p> 💰 <%= @offer.price %> golds / day</p>
-      <p><%= @offer.summary %></p>
-
-      <div class="d-flex">
-        <% if  @user == @offer.user %>
-          <%= link_to "Edit this offer", edit_offer_path(@offer), class: "button-normal" %>
-          <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
-          class: "button-normal" %>
-        <% else %>
-          <% unless current_user.hobbit %>
-            <%= link_to "Reserve", new_offer_reservation_path(@offer), class: "button-normal" %>
-          <% end %>
         <% end %>
-
+      </div>
+        <h1 class="border-bottom"><%= @offer.user.first_name %> <%= @offer.user.last_name %></h1>
+        <div class="d-flex">
+          <div>
+            <p> 💰 <%= @offer.price %> golds / day</p>
+            <p><%= @offer.summary %></p>
+            <div class="d-flex">
+              <% if  @user == @offer.user %>
+                <%= link_to "Edit this offer", edit_offer_path(@offer), class: "button-normal" %>
+                <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
+                class: "button-normal" %>
+              <% else %>
+                <%= link_to "Reserve", new_offer_reservation_path(@offer), class: "button-normal" %>
+              <% end %>
+            </div>
+          </div>
+        <div class="card mt-3">
+          <img src="https://lotro.gamepressure.com/gfx/228474889.jpg" alt="map of Shire">
+          <p> 📍 <%= @offer.localisation %></p>
+        </div>
       </div>
     </div>
   </div>
+</div>
