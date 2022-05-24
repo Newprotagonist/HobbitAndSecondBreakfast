@@ -1,14 +1,16 @@
-.button-green {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#57fb16, #67c40f);
-  transition: background 0.3s ease;
-  border: 1px solid #64c40f;
+.button-normal {
+  background-color: $brown;
+  color: $light-beige;
+  font-family: 'Merienda', cursive;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  margin: 5px;
 }
 
-.button-green:hover {
-  background: linear-gradient(#14ff95, #0fda42);
-  color: white;
+.button-normal:hover {
+  opacity: 0.8;
+  color: $dark-beige;
 }
