@@ -1,0 +1,11 @@
+<ul>
+  <% @reservations.each do |reservation| %>
+  <li class="reservation">
+    <% hobbit = reservation.offer.user %>
+    Related offer: <%= link_to "#{hobbit.first_name} #{hobbit.last_name}", offer_path(reservation.offer) %>
+    Start date: <%= reservation.start_date %>
+    End date: <%= reservation.end_date %>
+    Total price: <%= reservation.total_price %>
+  </li>
+  <% end %>
+</ul>

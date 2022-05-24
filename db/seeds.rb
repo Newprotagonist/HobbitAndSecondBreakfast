@@ -1,5 +1,6 @@
 require "faker"
 
+Reservation.destroy_all
 Offer.destroy_all
 User.destroy_all
 
@@ -21,6 +22,8 @@ hobbits = [
     last_name: "Took"
   }
 ]
+
+User.create(first_name: "Gandalf", last_name: "The White", email: "gandalf@istari.org", password: "secret")
 
 hobbits.each do |hobbit|
   user = User.new(hobbit)

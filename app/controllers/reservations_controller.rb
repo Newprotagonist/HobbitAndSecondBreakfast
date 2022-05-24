@@ -1,12 +1,18 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[show edit update destroy]
 
+  def index
+    @reservations = policy_scope(Reservation)
+  end
+
   def show
+    authorize @reservation
   end
 
   def new
     @offer = Offer.find(params[:offer_id])
     @reservation = Reservation.new
+    authorize @reservation
   end
 
   def create
@@ -15,6 +21,7 @@ class ReservationsController < ApplicationController
     @reservation.offer = @offer
     @reservation.user = current_user
     @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
+    authorize @reservation
     if @reservation.save!
       redirect_to reservation_path(@reservation)
     else
