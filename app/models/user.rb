@@ -5,4 +5,7 @@ class User < ApplicationRecord
   has_many :reservation
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :first_name, presence: true, uniqueness: { scope: :last_name }
+  validates :last_name, presence: true
+  validates :email, presence: true, uniqueness: true
 end
