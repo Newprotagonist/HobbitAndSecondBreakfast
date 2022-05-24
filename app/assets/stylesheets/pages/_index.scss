@@ -1,2 +1,14 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.index-title {
+  width: 75em;
+  border-bottom: solid $dark-red;
+}
+
+.index-title h1 {
+  color: $dark-red;
+  font-family: 'Tangerine';
+  text-align: center ;
+  font-size: 5.5em;
+}

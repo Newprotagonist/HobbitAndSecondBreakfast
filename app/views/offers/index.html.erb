@@ -1,22 +1,29 @@
-<h1>Choose your Hobbit !</h1>
-
 <div>
-
-  <% @offers.each do |offer| %>
-    <div>
-      <h3><%= link_to "#{offer.user[:first_name]} #{offer.user[:last_name]}", offer_path(offer) %></h3> <p><%=link_to "Choose him!", new_offer_reservation_path(offer), class:"btn btn-primary"%></p>
+  <div class="row index-title mx-auto mb-5 pt-3">
+    <h1>Choose your Hobbit !</h1>
+  </div>
+  <div class="row">
+        <% @offers.each do |offer| %>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="card mx-auto my-2" style="width: 300px; overflow: hidden;">
+        <img src="" alt="">
+        <div class="card-body">
+          <div class="card-title">
+            <%= link_to "#{offer.user[:first_name]} #{offer.user[:last_name]}", offer_path(offer) %>
+          </div>
+          <div>
+            <div>
+              📍 <%= offer.localisation %>
+            </div>
+            <div>
+              💰 <%= offer.price %> golds / per day
+            </div>
+          </div>
+          <div>
+            <%= offer.summary[0,50] %>...
+          </div>
+        </div>
     </div>
-
-    <div>
-     <p> 📍 <%= offer.localisation %></p>
-    </div>
-
-    <div>
-      <p> 💰 <%= offer.price %> golds</p>
-    </div>
-
-    <div>
-      <p><%= offer.summary %></p>
-    </div>
-  <% end %>
+  </div>
+      <% end %>
 </div>
