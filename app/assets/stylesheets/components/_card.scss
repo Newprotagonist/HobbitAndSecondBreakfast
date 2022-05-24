@@ -1,8 +1,15 @@
 .card {
   overflow: hidden;
-  background: white;
+  background: $light-brown;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 15px;
   border-radius: 10px;
-  margin: 15px;
+  color: $light-beige;
+  text-align: center;
+}
+
+.card-title a {
+  color: $light-beige;
+  font-family:'Merienda';
+  text-align: center;
 }
