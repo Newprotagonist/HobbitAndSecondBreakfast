@@ -1,6 +1,11 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-6">
+      <% if @offer.photos %>
+        <% @offer.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
       <h1 class="border-bottom"><%= @offer.user.first_name %><%= @offer.user.last_name %></h1>
       <p> 📍 <%= @offer.localisation %></p>
       <p> 💰 <%= @offer.price %> golds / day</p>

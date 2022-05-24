@@ -1,4 +1,6 @@
 class OffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @offers = policy_scope(Offer)
   end
@@ -50,6 +52,6 @@ class OffersController < ApplicationController
   private
 
   def params_require
-    params.require(:offer).permit(:localisation, :price, :summary, :user_id)
+    params.require(:offer).permit(:localisation, :price, :summary, :user_id, photos: [])
   end
 end
