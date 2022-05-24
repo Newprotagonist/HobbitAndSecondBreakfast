@@ -29,4 +29,12 @@ class ReservationPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def accept?
+    user.hobbit and record.offer.user == user
+  end
+
+  def decline?
+    user.hobbit and record.offer.user == user
+  end
 end
