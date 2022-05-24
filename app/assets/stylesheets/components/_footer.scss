@@ -1,0 +1,36 @@
+.footer {
+  background-image: asset-url('footer.png');
+  height: 258px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  width:100%;
+  background-color: $brown;
+  color: $light-beige;
+  position: relative;
+  bottom: 0;
+}
+
+.description {
+  text-align: left;
+  justify-content: left;
+}
+
+#scrollUp
+{
+position: relative;
+bottom : 10px;
+right: 100px;
+opacity: 0.5;
+text-decoration: none;
+}
+
+#scrollUp a {
+  color: $light-beige;
+  text-decoration: none;
+}
+
+#homeImage {
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+}

@@ -1,9 +1,10 @@
 <h1>Reservations#show</h1>
 <p>Find me in app/views/reservations/show.html.erb</p>
-<ul>
-  <li>Total price: <%= @reservation.total_price %></li>
-  <li>Start date: <%= @reservation.start_date %></li>
-  <li>End date: <%= @reservation.end_date %></li>
-</ul>
-<%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
-<%= link_to "Cancel reservation", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-danger delete" %>
+<%= render partial: "reservation", locals: { reservation: @reservation } %>
+<% if current_user.hobbit %>
+  <%= link_to "Accept", accept_reservation_path(@reservation), data: {turbo_method: :post}, class: "btn btn-success" %>
+  <%= link_to "Decline", decline_reservation_path(@reservation), data: {turbo_method: :post}, class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
+  <%= link_to "Cancel reservation", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-danger" %>
+<% end %>

@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: %i[show edit update destroy]
+  before_action :set_reservation, only: %i[show edit update destroy accept decline]
   before_action :set_offer, only: %i[new create]
 
   def index
@@ -47,6 +47,21 @@ class ReservationsController < ApplicationController
     authorize @reservation
     @reservation.destroy
     redirect_to reservations_path, status: :see_other
+  end
+
+  def accept
+    authorize @reservation
+    @reservation.status = "Accepted"
+    authorize @reservation
+    @reservation.save
+    redirect_to reservation_path(@reservation)
+  end
+
+  def decline
+    @reservation.status = "Declined"
+    authorize @reservation
+    @reservation.save
+    redirect_to reservation_path(@reservation)
   end
 
   private
