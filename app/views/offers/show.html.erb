@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-6">
+      <% if @offer.photos %>
+        <% @offer.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
+      <h1 class="border-bottom"><%= @offer.user.first_name %><%= @offer.user.last_name %></h1>
+      <p> 📍 <%= @offer.localisation %></p>
+      <p> 💰 <%= @offer.price %> golds / day</p>
+      <p><%= @offer.summary %></p>
+      <% if  @user == @offer.user %>
+        <%= link_to "Edit this offer", edit_offer_path(@offer), class: "btn btn-primary" %>
+        <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
+        class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "Reserve", new_offer_reservation_path(@offer), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
