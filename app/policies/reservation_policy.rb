@@ -15,7 +15,7 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    !user.hobbit
   end
 
   def show?
