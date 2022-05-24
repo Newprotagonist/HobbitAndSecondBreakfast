@@ -2,7 +2,7 @@
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-8 card">
 
-      <% if @offer.photos %>
+      <% if !@offer.photos.empty? %>
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <% @offer.photos.each_with_index do |photo, index| %>
@@ -22,7 +22,7 @@
         </div>
       <% end %>
 
-      <h1 class="border-bottom"><%= @offer.user.first_name %><%= @offer.user.last_name %></h1>
+      <h1 class="border-bottom"><%= @offer.user.first_name %> <%= @offer.user.last_name %></h1>
       <p> 📍 <%= @offer.localisation %></p>
       <p> 💰 <%= @offer.price %> golds / day</p>
       <p><%= @offer.summary %></p>
