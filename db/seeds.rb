@@ -23,8 +23,6 @@ hobbits = [
   }
 ]
 
-User.create(first_name: "Gandalf", last_name: "The White", email: "gandalf@istari.org", password: "secret")
-
 hobbits.each do |hobbit|
   user = User.new(hobbit)
   user.password = "secret"
@@ -44,3 +42,26 @@ User.all.each do |hobbit|
     user: hobbit
   )
 end
+
+gandalf = User.create(
+  first_name: "Gandalf",
+  last_name: "The White",
+  email: "gandalf@istari.org",
+  password: "secret"
+)
+
+Offer.all.each do |offer|
+  Reservation.create(
+    offer: offer,
+    user: gandalf,
+    start_date: Date.today,
+    end_date: Date.today + 20,
+    total_price: offer.price * 20
+  )
+end
+User.create(
+  first_name: "Saruman",
+  last_name: "The Betrayer",
+  email: "saruman@istari.org",
+  password: "secret"
+)

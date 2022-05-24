@@ -31,10 +31,12 @@ class ReservationsController < ApplicationController
 
   def edit
     @offer = @reservation.offer
+    authorize @reservation
   end
 
   def update
     @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
+    authorize @reservation
     if @reservation.save
       redirect_to reservation_path(@reservation)
     else
@@ -43,8 +45,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+    authorize @reservation
     @reservation.destroy
-    redirect_to offers_path, status: :see_other
+    redirect_to reservations_path, status: :see_other
   end
 
   private
