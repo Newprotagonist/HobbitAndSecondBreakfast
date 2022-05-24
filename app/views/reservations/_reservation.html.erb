@@ -1,0 +1,16 @@
+<%= link_to "Reservation ##{reservation.id}", reservation_path(reservation) %>
+<br>
+<% if current_user.hobbit %>
+  <%= "Client: #{reservation.user.first_name} #{reservation.user.last_name}" %>
+<% else %>
+  <%= link_to "#{reservation.offer.user.first_name} #{reservation.offer.user.last_name}", offer_path(reservation.offer) %>
+<% end %>
+<br>
+Start date: <%= reservation.start_date %>
+<br>
+End date: <%= reservation.end_date %>
+<br>
+Price: <%= reservation.total_price %>
+<br>
+Status: <%= reservation.status %>
+<br>

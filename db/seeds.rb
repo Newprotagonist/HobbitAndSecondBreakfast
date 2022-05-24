@@ -1,8 +1,9 @@
 require "faker"
 
-Reservation.destroy_all
-Offer.destroy_all
-User.destroy_all
+# Reservation.destroy_all
+# Offer.destroy_all
+# User.destroy_all
+`rails db:drop db:create db:migrate`
 
 hobbits = [
   {
@@ -27,6 +28,7 @@ hobbits.each do |hobbit|
   user = User.new(hobbit)
   user.password = "secret"
   user.email = Faker::Internet.email(name: user.first_name, domain: user.last_name)
+  user.hobbit = true
   user.save
 end
 
@@ -47,7 +49,8 @@ gandalf = User.create(
   first_name: "Gandalf",
   last_name: "The White",
   email: "gandalf@istari.org",
-  password: "secret"
+  password: "secret",
+  hobbit: false
 )
 
 Offer.all.each do |offer|
@@ -63,5 +66,6 @@ User.create(
   first_name: "Saruman",
   last_name: "The Betrayer",
   email: "saruman@istari.org",
-  password: "secret"
+  password: "secret",
+  hobbit: false
 )

@@ -1,17 +1,10 @@
-<ul>
+<% if @reservations.empty? %>
+  <p>No reservations.</p>
+<% else %>
+  <ul>
   <% @reservations.each do |reservation| %>
-  <li class="reservation">
-    <% hobbit = reservation.offer.user %>
-    <%= link_to "Reservation number #{reservation.id}", reservation_path(reservation) %>
-    <br>
-    <%= link_to "#{hobbit.first_name} #{hobbit.last_name}", offer_path(reservation.offer) %>
-    <br>
-    Start date: <%= reservation.start_date %>
-    <br>
-    End date: <%= reservation.end_date %>
-    <br>
-    Price: <%= reservation.total_price %>
-  </li>
+    <li class="reservation"><%= render partial: "reservation", locals: { reservation: reservation } %></li>
   <% end %>
-</ul>
+  </ul>
 Total price: <%= @reservations.sum(:total_price) %>
+<% end %>
