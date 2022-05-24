@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[show edit update destroy]
+  before_action :set_offer, only: %i[new create]
 
   def index
     @reservations = policy_scope(Reservation)
@@ -10,13 +11,11 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @offer = Offer.find(params[:offer_id])
     @reservation = Reservation.new
     authorize @reservation
   end
 
   def create
-    @offer = Offer.find(params[:offer_id])
     @reservation = Reservation.new(reservation_params)
     @reservation.offer = @offer
     @reservation.user = current_user
@@ -58,5 +57,9 @@ class ReservationsController < ApplicationController
 
   def set_reservation
     @reservation = Reservation.find(params[:id])
+  end
+
+  def set_offer
+    @offer = Offer.find(params[:offer_id])
   end
 end
