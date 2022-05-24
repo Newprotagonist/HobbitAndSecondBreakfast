@@ -4,6 +4,11 @@
   <li>Total price: <%= @reservation.total_price %></li>
   <li>Start date: <%= @reservation.start_date %></li>
   <li>End date: <%= @reservation.end_date %></li>
+  <li>Status: <%= @reservation.status %></li>
 </ul>
-<%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
-<%= link_to "Cancel reservation", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-danger delete" %>
+<% if current_user.hobbit %>
+  <%# <%= simple_for_for %> %>
+<% else %>
+  <%= link_to "Edit reservation", edit_reservation_path(@reservation) %>
+  <%= link_to "Cancel reservation", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-danger delete" %>
+<% end %>

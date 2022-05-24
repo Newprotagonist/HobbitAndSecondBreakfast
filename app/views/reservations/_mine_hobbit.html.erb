@@ -1,0 +1,19 @@
+<ul>
+  <% @reservations.each do |reservation| %>
+  <li class="reservation">
+    <% client = reservation.user %>
+    <%= link_to "Reservation number #{reservation.id}", reservation_path(reservation) %>
+    <br>
+    <%= "Client: #{client.first_name} #{client.last_name}" %>
+    <br>
+    Start date: <%= reservation.start_date %>
+    <br>
+    End date: <%= reservation.end_date %>
+    <br>
+    Price: <%= reservation.total_price %>
+    <br>
+    Status: <%= reservation.status %>
+  </li>
+  <% end %>
+</ul>
+Total price: <%= @reservations.sum(:total_price) %>
