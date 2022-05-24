@@ -1,11 +1,27 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-8 card">
+
       <% if @offer.photos %>
-        <% @offer.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+              <% @offer.photos.each do |photo| %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag photo.key, style: 'height:100%; width:auto;', crop: :fill %>
+                </div>
+              <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
       <% end %>
+
       <h1 class="border-bottom"><%= @offer.user.first_name %><%= @offer.user.last_name %></h1>
       <p> 📍 <%= @offer.localisation %></p>
       <p> 💰 <%= @offer.price %> golds / day</p>
