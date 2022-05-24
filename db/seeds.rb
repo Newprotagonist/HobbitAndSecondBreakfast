@@ -1,9 +1,8 @@
 require "faker"
 
-# Reservation.destroy_all
-# Offer.destroy_all
-# User.destroy_all
-`rails db:drop db:create db:migrate`
+Reservation.destroy_all
+Offer.destroy_all
+User.destroy_all
 
 hobbits = [
   {
@@ -27,7 +26,7 @@ hobbits = [
 hobbits.each do |hobbit|
   user = User.new(hobbit)
   user.password = "secret"
-  user.email = Faker::Internet.email(name: user.first_name, domain: user.last_name)
+  user.email = "#{user.first_name.chr}#{user.last_name}@hobbits.com"
   user.hobbit = true
   user.save
 end
@@ -37,7 +36,7 @@ User.all.each do |hobbit|
   10.times do
     summary << "#{Faker::Fantasy::Tolkien.poem}\n"
   end
-  Offer.create(
+  Offer.create!(
     localisation: Faker::Movies::LordOfTheRings.location,
     price: rand(20..100),
     summary: summary,
@@ -62,6 +61,7 @@ Offer.all.each do |offer|
     total_price: offer.price * 20
   )
 end
+
 User.create(
   first_name: "Saruman",
   last_name: "The Betrayer",
