@@ -27,7 +27,7 @@ hobbits = [
 hobbits.each do |hobbit|
   user = User.new(hobbit)
   user.password = "secret"
-  user.email = "#{user.first_name}.#{user.last_name}@hobbits.com"
+  user.email = "#{user.first_name.chr}#{user.last_name}@hobbits.com"
   user.hobbit = true
   user.save
 end
