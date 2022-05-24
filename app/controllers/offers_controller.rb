@@ -41,8 +41,8 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    authorize @offer
     @offer = Offer.find(params[:id])
+    authorize @offer
     @offer.destroy
     redirect_to offers_path, status: :see_other
   end

@@ -6,11 +6,11 @@ class OfferPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
     true
   end
 
-  def show
+  def show?
     true
   end
 
@@ -23,7 +23,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def update?
-    current_user == user
+    record.user == user
   end
 
   def edit?
@@ -31,6 +31,6 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def destroy?
-    current_user == user
+    record.user == user
   end
 end
