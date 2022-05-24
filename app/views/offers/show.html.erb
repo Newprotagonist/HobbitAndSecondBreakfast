@@ -6,7 +6,7 @@
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       <% end %>
-      <h1 class="border-bottom"><%= @offer.user.first_name %><%= @offer.user.last_name %></h1>
+      <h1 class="border-bottom"><%= @offer.user.first_name %> <%= @offer.user.last_name %></h1>
       <p> 📍 <%= @offer.localisation %></p>
       <p> 💰 <%= @offer.price %> golds / day</p>
       <p><%= @offer.summary %></p>
