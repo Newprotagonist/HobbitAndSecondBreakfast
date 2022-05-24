@@ -1,7 +1,8 @@
-<%= simple_form_for([@offer, @reservation], method: :post, url: offer_reservations_path(@offer), data: { "controller": "total-price" }) do |form| %>
-  <%= form.input :start_date, as: :date, html5: true, input_html: { min: Date.today, data: {"total-price-target": "start", "action": "total-price#calc" }} %>
-  <%= form.input :end_date, as: :date, html5: true, input_html: { min: Date.tomorrow, data: {"total-price-target": "end", "action": "total-price#calc" }} %>
+<%= simple_form_for([@offer, @reservation], method: :post, url: offer_reservations_path(@offer), data: { "controller": "total-price flatpickr" }) do |form| %>
+  <%= form.input :start_date, as: :string, html5: true, input_html: { min: Date.today, data: {"total-price-target": "start", "action": "total-price#calc", flatpickr_target: 'input' } } %>
+  <%= form.input :end_date, as: :string, html5: true, input_html: { min: Date.tomorrow, data: {"total-price-target": "end", "action": "total-price#calc", flatpickr_target: 'input' }} %>
   <span>Price per day: </span><span data-total-price-target="daily"><%= @offer.price %></span>
   <span>Total price: </span><span data-total-price-target="total"><%= @reservation.total_price or 0 %></span>
   <%= form.button :submit, class: "btn btn-outline-primary" %>
 <% end %>
+  
