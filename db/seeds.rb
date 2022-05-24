@@ -27,7 +27,7 @@ hobbits = [
 hobbits.each do |hobbit|
   user = User.new(hobbit)
   user.password = "secret"
-  user.email = Faker::Internet.email(name: user.first_name, domain: user.last_name)
+  user.email = "#{user.first_name}.#{user.last_name}@hobbits.com"
   user.hobbit = true
   user.save
 end
@@ -62,6 +62,7 @@ Offer.all.each do |offer|
     total_price: offer.price * 20
   )
 end
+
 User.create(
   first_name: "Saruman",
   last_name: "The Betrayer",
