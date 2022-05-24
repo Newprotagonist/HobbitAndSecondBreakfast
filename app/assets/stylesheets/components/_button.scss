@@ -1,0 +1,14 @@
+.button-green {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#57fb16, #67c40f);
+  transition: background 0.3s ease;
+  border: 1px solid #64c40f;
+}
+
+.button-green:hover {
+  background: linear-gradient(#14ff95, #0fda42);
+  color: white;
+}

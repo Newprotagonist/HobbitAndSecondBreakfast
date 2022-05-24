@@ -7,7 +7,7 @@
           <div class="carousel-inner">
               <% @offer.photos.each do |photo| %>
                 <div class="carousel-item active">
-                  <%= cl_image_tag photo.key, style: 'height:100%; width:auto;', crop: :fill %>
+                  <%= cl_image_tag photo.key, width: 400, height: 300, crop: :fill %>
                 </div>
               <% end %>
           </div>
@@ -27,9 +27,11 @@
       <p> 💰 <%= @offer.price %> golds / day</p>
       <p><%= @offer.summary %></p>
       <% if  @user == @offer.user %>
-        <%= link_to "Edit this offer", edit_offer_path(@offer), class: "btn btn-primary" %>
-        <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
-        class: "btn btn-danger" %>
+        <div class="d-flex">
+          <%= link_to "Edit this offer", edit_offer_path(@offer), class: "button-green" %>
+          <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
+          class: "button alert" %>
+        </div>
       <% else %>
         <%= link_to "Reserve", new_offer_reservation_path(@offer), class: "btn btn-primary" %>
       <% end %>
