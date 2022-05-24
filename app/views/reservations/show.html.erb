@@ -1,11 +1,6 @@
 <h1>Reservations#show</h1>
 <p>Find me in app/views/reservations/show.html.erb</p>
-<ul>
-  <li>Total price: <%= @reservation.total_price %></li>
-  <li>Start date: <%= @reservation.start_date %></li>
-  <li>End date: <%= @reservation.end_date %></li>
-  <li>Status: <%= @reservation.status %></li>
-</ul>
+<%= render partial: "reservation", locals: { reservation: @reservation } %>
 <% if current_user.hobbit %>
   <%= link_to "Accept", accept_reservation_path(@reservation), data: {turbo_method: :post}, class: "btn btn-success" %>
   <%= link_to "Decline", decline_reservation_path(@reservation), data: {turbo_method: :post}, class: "btn btn-danger" %>
