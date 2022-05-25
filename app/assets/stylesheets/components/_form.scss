@@ -1,21 +1,14 @@
-.show-h1 {
-  font-family: 'Merienda', cursive;
-  color: $brown;
-  font-size: 50px;
-  font-weight: bold;
+.form {
   margin: 15px;
-  border-bottom: solid $brown;
-}
-
-.show-p {
-  font-family: var(--bs-body-font-family);
-  color: $brown;
-  font-style: italic;
-}
-
-.show-container {
   overflow: hidden;
+  background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 15px;
   border-radius: 10px;
-  padding: 10px;
+}
+
+.form-text {
+  color: $brown;
+  font-family: 'Merienda', cursive;
+  font-weight: bold;
 }
