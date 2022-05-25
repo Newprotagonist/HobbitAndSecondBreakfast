@@ -37,7 +37,7 @@ User.all.each do |hobbit|
     summary << "#{Faker::Fantasy::Tolkien.poem}\n"
   end
   Offer.create!(
-    localisation: Faker::Movies::LordOfTheRings.location,
+    location: Faker::Movies::LordOfTheRings.location,
     price: rand(20..100),
     summary: summary,
     user: hobbit
