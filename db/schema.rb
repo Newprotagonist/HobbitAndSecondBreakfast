@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_113541) do
   end
 
   create_table "offers", force: :cascade do |t|
-    t.string "localisation"
+    t.string "location"
     t.integer "price"
     t.text "summary"
     t.bigint "user_id", null: false
