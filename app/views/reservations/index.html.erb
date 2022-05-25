@@ -1,10 +1,12 @@
-<% if @reservations.empty? %>
-  <p>No reservations.</p>
-<% else %>
-  <ul>
-  <% @reservations.each do |reservation| %>
-    <li class="reservation"><%= render partial: "reservation", locals: { reservation: reservation } %></li>
+<div class="container">
+  <% if @reservations.empty? %>
+    <h3>No reservations.</h3>
+  <% else %>
+    <ul>
+    <% @reservations.each do |reservation| %>
+      <li class="reservation"><%= render partial: "reservation", locals: { reservation: reservation } %></li>
+    <% end %>
+    </ul>
+  Total price: <%= @reservations.sum(:total_price) %>
   <% end %>
-  </ul>
-Total price: <%= @reservations.sum(:total_price) %>
-<% end %>
+</div>
