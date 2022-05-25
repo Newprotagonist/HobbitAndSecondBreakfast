@@ -11,7 +11,7 @@
         <% if user_signed_in? %>
           <% if current_user.hobbit %>
             <li class="nav-item">
-            <% if current_user.offer %>
+            <% if current_user.offer&.id %>
               <%= link_to "My offer", offer_path(current_user.offer), class:"nav-link" %>
             <% else %>
               <%= link_to "Create an Offer", new_offer_path, class:"nav-link" %>
