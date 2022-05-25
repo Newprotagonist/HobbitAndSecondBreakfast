@@ -1,9 +1,18 @@
-<%= link_to "Reservation ##{reservation.id}", reservation_path(reservation) %>
-<br>
+<div class="card-title">
+  <%= link_to "Reservation ##{reservation.id}", reservation_path(reservation) %>
+</div>
 <% if current_user.hobbit %>
   <%= "Client: #{reservation.user.first_name} #{reservation.user.last_name}" %>
 <% else %>
-  <%= link_to "#{reservation.offer.user.first_name} #{reservation.offer.user.last_name}", offer_path(reservation.offer) %>
+  <div class="picture row align-items-center">
+    <%= link_to "#{reservation.offer.user.first_name} #{reservation.offer.user.last_name}", offer_path(reservation.offer) %>
+    <% if !reservation.offer.photos.empty? %>
+      <%= cl_image_tag reservation.offer.photos[0].key %>
+    <% else %>
+      <%= image_tag ('no-picture.gif') %>
+      <p>No pictures found</p>
+    <% end %>
+  </div>
 <% end %>
 <br>
 Start date: <%= reservation.start_date %>
@@ -14,3 +23,10 @@ Price: <%= reservation.total_price %>
 <br>
 Status: <%= reservation.status %>
 <br>
+<% if current_user.hobbit %>
+  <%= link_to "Accept", accept_reservation_path(reservation), data: {turbo_method: :post}, class: "button-normal" %>
+  <%= link_to "Decline", decline_reservation_path(reservation), data: {turbo_method: :post}, class: "button-normal" %>
+<% else %>
+  <%= link_to "Edit reservation", edit_reservation_path(reservation), class: "button-normal" %>
+  <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal" %>
+<% end %>
