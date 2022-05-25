@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
     @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
     authorize @reservation
     if @reservation.save!
-      redirect_to reservation_path(@reservation)
+      redirect_to reservations_path
     else
       render :new, status: :unprocessable_entity
     end
