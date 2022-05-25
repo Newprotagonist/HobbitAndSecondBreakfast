@@ -12,3 +12,17 @@
   text-align: center ;
   font-size: 5.5em;
 }
+
+.picture {
+  height: 200px;
+  border-bottom: solid $light-beige;
+}
+
+.summary {
+  border-top: dashed $light-beige;
+  height: 50px;
+}
+
+.card-title {
+  border-bottom: dashed $light-beige;
+}
