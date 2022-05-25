@@ -6,7 +6,6 @@
     </div>
   </div>
 <% else %>
-<div class="container">
   <div class="row mx-auto reservation-index">
     <h1>Your Reservations</h1>
     <h2><em>Total Price: <%= @reservations.sum(:total_price) %></em></h2>
@@ -20,5 +19,4 @@
     </div>
     <% end %>
   </div>
-</div>
 <% end %>
