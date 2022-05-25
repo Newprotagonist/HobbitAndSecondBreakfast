@@ -54,14 +54,14 @@ class ReservationsController < ApplicationController
     @reservation.status = "Accepted"
     authorize @reservation
     @reservation.save
-    redirect_to reservation_path(@reservation)
+    redirect_to reservations_path
   end
 
   def decline
     @reservation.status = "Declined"
     authorize @reservation
     @reservation.save
-    redirect_to reservation_path(@reservation)
+    redirect_to reservations_path
   end
 
   private
