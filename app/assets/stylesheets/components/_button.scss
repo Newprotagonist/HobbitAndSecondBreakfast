@@ -15,3 +15,25 @@
   opacity: 0.8;
   color: $dark-beige;
 }
+
+.mainbutton {
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 8vh;
+    a {
+      background-color: $brown;
+      color: $light-beige;
+      font-family: 'Tangerine';
+      border-radius: 7%;
+      text-decoration: none;
+      // padding: 20px 30px;
+    }
+
+}
+
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
