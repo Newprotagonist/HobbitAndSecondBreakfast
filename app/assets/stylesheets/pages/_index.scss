@@ -23,6 +23,12 @@
   overflow: hidden;
 }
 
+.picture a {
+  color: $light-beige;
+  font-family:'Merienda';
+  text-align: center;
+}
+
 .summary {
   border-top: dashed $light-beige;
   height: 50px;
@@ -30,4 +36,32 @@
 
 .card-title {
   border-bottom: dashed $light-beige;
+}
+
+.no-reservation {
+  font-family: 'Tangerine';
+  font-size: 100px;
+  color: $dark-red;
+  text-align: center;
+}
+
+.reservation-index {
+  font-family: 'Tangerine';
+  color: $dark-red;
+  text-align: center;
+  border-bottom: solid $dark-red;
+}
+
+.reservation-index h1 {
+  font-family: 'Tangerine';
+  color: $dark-red;
+  text-align: center;
+  font-size: 100px;
+}
+
+.reservation-index h2 {
+  font-family: 'Tangerine';
+  color: $dark-red;
+  text-align: center;
+  font-size: 50px;
 }
