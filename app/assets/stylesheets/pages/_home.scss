@@ -12,4 +12,8 @@
   font-family: 'Tangerine';
   text-align: center;
   font-size: 8vw;
+ }
+
+.page {
+  min-height: calc(100vh - 50px - 258px);
 }
