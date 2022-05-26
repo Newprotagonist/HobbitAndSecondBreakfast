@@ -1,6 +1,26 @@
-.alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+.flash {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  width: auto;
+  font-size: 15px;
+}
+
+.flash-success {
+  border: 2px solid #0a8a52;
+  background-color: #97debf;
+}
+
+.flash-warning {
+  border: 2px solid #FFC65A;
+  background-color: #f3efcb;
+}
+
+.flash-danger {
+  border: 2px solid #400406;
+  background-color: #e48f8f;
 }
