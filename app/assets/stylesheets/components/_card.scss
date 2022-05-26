@@ -1,5 +1,4 @@
 .card {
-  overflow: hidden;
   background: $light-brown;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 15px;
@@ -8,8 +7,55 @@
   text-align: center;
 }
 
+.card-title {
+padding: 10px;
+}
+
 .card-title a {
   color: $light-beige;
   font-family:'Merienda';
   text-align: center;
+}
+
+.card-container {
+  margin: 0 auto;
+  width: 750px;
+  background: $light-brown;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  color: $light-beige;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.reservation-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding-right: 40px;
+
+}
+
+.reservation-card a {
+  color: $light-beige;
+  font-family:'Merienda';
+  text-align: center;
+  justify-content: space-around;
+}
+
+.reservation-list {
+  margin: 20px auto;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.client {
+  margin-top: 100px;
+  align-items: end;
 }
