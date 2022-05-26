@@ -13,3 +13,20 @@
   font-family:'Merienda';
   text-align: center;
 }
+
+.reservation-card {
+  width: 150px;
+  overflow: hidden;
+  background: $light-brown;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  color: $light-beige;
+  text-align: center;
+}
+
+.reservation-card a {
+  color: $light-beige;
+  font-family:'Merienda';
+  text-align: center;
+}
