@@ -44,14 +44,14 @@ Reservation.all.each do |reservation|
     giver: hobbit,
     receiver: wizard,
     reservation: reservation,
-    content: Faker::Fantasy::Tolkien.poem,
+    content: "% 10s" % Faker::Fantasy::Tolkien.poem,
     rating: rand(0..5.0).round(1)
   )
   Review.create!(
     giver: wizard,
     receiver: hobbit,
     reservation: reservation,
-    content: Faker::Fantasy::Tolkien.poem,
+    content: "% 10s" % Faker::Fantasy::Tolkien.poem,
     rating: rand(0..5.0).round(1)
   )
   reservation.update!(status: "Done")
