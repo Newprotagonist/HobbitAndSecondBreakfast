@@ -3,6 +3,7 @@
       <div class="col-12 col-md-9 show-container">
         <div class="row">
           <div class="col-12">
+            <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
             <h1 class="show-h1"><%= @user.first_name %> <%= @user.last_name %></h1>
           </div>
         </div>
@@ -16,6 +17,16 @@
               </div>
           </div>
         </div>
+
+        <%# Little form to upload his picture  %>
+        <%= simple_form_for(@user) do |f| %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: "button-normal" %>
+        <% end %>
+
+
+
+        <%# This is the map  %>
         <div class="row">
           <div class="col">
             <div class="card mt-3">
@@ -24,6 +35,10 @@
             </div>
           </div>
         </div>
+
+
+
+
       </div>
   </div>
 </div>
