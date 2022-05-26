@@ -16,7 +16,7 @@
     <div>
       <%= render 'shared/navbar' %>
       <div class="page">
-        <%= render 'shared/alert' %>
+        <%= render 'shared/alert' unless @disable_alert %>
         <%= yield %>
       </div>
       <%= render 'shared/footer' %>
