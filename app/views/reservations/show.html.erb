@@ -3,7 +3,7 @@
 <div><%= render partial: "reservation", locals: { reservation: @reservation } %></div>
 <%= link_to "Leave a review ", new_reservation_review_path(@reservation) if !current_user.reviewed?(@reservation) and @reservation.over? and @reservation.accepted? %>
 <div>
-  Reviews:
+  <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" %>
   <% @reservation.reviews.each do |review| %>
   <div>
     From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %>
