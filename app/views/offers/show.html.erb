@@ -30,7 +30,7 @@
     <div class="row">
       <div class="col-12 show-p">
           <div class="p-2">
-            <p> 💰 <%= @offer.price %> golds / day</p>
+            <p> <i class="fa-solid fa-coins"></i> <%= @offer.price %> golds / day</p>
             <p><%= @offer.summary %></p>
             <div class="d-flex">
               <% if  @user == @offer.user %>
@@ -49,7 +49,7 @@
     <div class="row">
       <div class="col">
         <div class="card mt-3">
-          <p class="map-p"> 📍 <%= @offer.location %></p>
+          <p class="map-p"> <i class="fa-solid fa-map"></i> <%= @offer.location %></p>
           <img src="https://lotro.gamepressure.com/gfx/228474889.jpg" alt="map of Shire">
         </div>
       </div>
