@@ -1,3 +1,4 @@
 <h1>Reservations#edit</h1>
 <p>Find me in app/views/reservations/edit.html.erb</p>
-<%= render "form" %>
+<%= render partial: "form", locals: { reservation: @reservation, offer: @offer, form_url: reservation_path(@reservation) } %>
+<%= console %>
