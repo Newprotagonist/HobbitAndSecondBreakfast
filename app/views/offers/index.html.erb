@@ -9,7 +9,7 @@
     <h4>Filter by</h4>
       <%= f.label :offer_price, "Max Price" %>
       <div class="d-flex">
-      <%= f.range_field :offer_price, in: 0..1000, step: 10, data: {filter_target: "price", action: "filter#display"}%>
+      <%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%>
       <p data-filter-target="value">0</p>
       <i class="fa-solid fa-coins"></i>
       </div>
