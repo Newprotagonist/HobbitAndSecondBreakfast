@@ -3,11 +3,26 @@
     <h1>Choose your Hobbit !</h1>
   </div>
 </div>
-<%= form_with do |f| %>
-Filter by :
-  Price <%= f.number_field :offer_price, in: 0..1000, step: 10%>
-  Location <%= f.collection_select :offer_location, Offer.order(:location), :id, :location  %>
-<% end %>
+<div class="row mx-auto mb-5 pt-3 form col-sm-6">
+  <div class="form-text" data-controller="filter">
+    <%= form_with url: offers_path, method: :get do |f| %>
+    <h4>Filter by</h4>
+      <%= f.label :offer_price, "Max Price" %>
+      <div class="d-flex">
+      <%= f.range_field :offer_price, in: 0..1000, step: 10, data: {filter_target: "price", action: "filter#display"}%>
+      <p data-filter-target="value">0</p>
+      <i class="fa-solid fa-coins"></i>
+      </div>
+      <%= f.label :offer_location, "Choose location" %>
+      <br>
+      <%= f.collection_select :offer_location, Offer.order(:location), :id, :location, :include_blank => true  %>
+      <br>
+      <%= f.submit "Apply Filter", class:"button-normal" %>
+  <% end %>
+  </div>
+</div>
+
+
 
 <div class="row">
   <% @offers.each do |offer| %>
