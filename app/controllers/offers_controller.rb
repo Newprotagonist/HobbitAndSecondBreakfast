@@ -45,7 +45,9 @@ class OffersController < ApplicationController
   def update
     @offer = Offer.find(params[:id])
     authorize @offer
-    if @offer.update(params_require)
+    parameters = params_require
+    parameters.delete(:photos) if parameters[:photos].delete_if(&:blank?).empty?
+    if @offer.update(parameters)
       redirect_to offer_path(@offer)
     else
       render :new, status: :unprocessable_entity
