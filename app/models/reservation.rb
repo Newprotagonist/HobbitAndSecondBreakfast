@@ -1,8 +1,8 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :offer
-  validates :end_date, presence: true
-  validates :start_date, presence: true
+  validates :title, presence: true, length: { minimum: 4, maximum: 120 }
+  validates :end_date, :start_date, presence: true
   validate :end_date_is_after_start_date
 
   private

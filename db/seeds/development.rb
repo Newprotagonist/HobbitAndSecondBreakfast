@@ -7,7 +7,7 @@ User.all.each do |hobbit|
   end
   Offer.create!(
     location: Faker::Movies::LordOfTheRings.location,
-    price: rand(20..100),
+    price: rand(75..120),
     summary: summary,
     user: hobbit
   )
@@ -23,6 +23,7 @@ gandalf = User.create(
 
 Offer.all.each do |offer|
   Reservation.create(
+    title: "Quest to destroy the Ring",
     offer: offer,
     user: gandalf,
     start_date: Date.today,
