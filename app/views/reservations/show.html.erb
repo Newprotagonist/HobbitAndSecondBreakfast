@@ -1,10 +1,14 @@
 <h1>Reservations#show</h1>
 <p>Find me in app/views/reservations/show.html.erb</p>
-<%= render partial: "reservation", locals: { reservation: @reservation } %>
-<% if current_user.hobbit %>
-  <%= link_to "Accept", accept_reservation_path(@reservation), data: {turbo_method: :post}, class: "btn btn-success" %>
-  <%= link_to "Decline", decline_reservation_path(@reservation), data: {turbo_method: :post}, class: "btn btn-danger" %>
-<% else %>
-  <%= link_to "Edit reservation", edit_offer_reservation_path(@reservation.offer, @reservation), class: "btn btn-primary" %>
-  <%= link_to "Cancel reservation", reservation_path(@reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
-<% end %>
+<div><%= render partial: "reservation", locals: { reservation: @reservation } %></div>
+<%= link_to "Leave a review ", new_reservation_review_path(@reservation) if !current_user.reviewed?(@reservation) and @reservation.over? and @reservation.accepted? %>
+<div>
+  <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" %>
+  <% @reservation.reviews.each do |review| %>
+  <div>
+    From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %>
+    Content: <%= review.content %>
+    Rating: <%= review.rating %>
+  </div>
+  <% end %>
+</div>
