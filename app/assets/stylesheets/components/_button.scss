@@ -1,8 +1,10 @@
 .button-normal {
+  width: fit-content;
   background-color: $brown;
   color: $light-beige;
   font-family: 'Merienda', cursive;
   font-size: 15px;
+  text-decoration: none;
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -11,7 +13,18 @@
   margin: 5px;
 }
 
+.button-normal-a {
+  text-decoration: none;
+  color: $light-beige;
+  font-size: 4vw;
+}
+
 .button-normal:hover {
+  opacity: 0.8;
+  color: $dark-beige;
+}
+
+.button-normal-a:hover {
   opacity: 0.8;
   color: $dark-beige;
 }
@@ -20,7 +33,7 @@
   margin: 0 auto;
   width: fit-content;
   font-size: 8vh;
-    a {s
+    a {
       background-color: $brown;
       color: $light-beige;
       font-family: 'Tangerine';
