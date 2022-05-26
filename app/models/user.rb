@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true, uniqueness: { scope: :last_name }
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
+
+  def reviewed?(reservation)
+    reviews_as_giver.map(&:reservation).include? reservation
+  end
 end

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-6 form-text form">
+        <%= simple_form_for(@review, url: reservation_reviews_path) do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating, as: :range, input_html: { min: 0, max: 5, step: 0.1 } %>
+          <%= f.button :submit, class: "button-normal" %>
+        <% end %>
+    </div>
+  </div>
+</div>
