@@ -34,10 +34,12 @@ class ReservationsController < ApplicationController
   end
 
   def update
+    @offer = @reservation.offer
     @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
+    @reservation.status = "Pending"
     authorize @reservation
-    if @reservation.save
-      redirect_to reservation_path(@reservation)
+    if @reservation.update(reservation_params)
+      redirect_to reservations_path(@reservation)
     else
       render :edit, status: :unprocessable_entity
     end
