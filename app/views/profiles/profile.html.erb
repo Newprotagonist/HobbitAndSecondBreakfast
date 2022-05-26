@@ -3,6 +3,9 @@
       <div class="col-12 col-md-9 show-container">
         <div class="row">
           <div class="col-12">
+            <% if @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
             <h1 class="show-h1"><%= @user.first_name %> <%= @user.last_name %></h1>
           </div>
         </div>
@@ -16,6 +19,10 @@
               </div>
           </div>
         </div>
+
+        <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal" %>
+
+        <%# This is the map  %>
         <div class="row">
           <div class="col">
             <div class="card mt-3">
@@ -24,6 +31,7 @@
             </div>
           </div>
         </div>
+
       </div>
   </div>
 </div>
