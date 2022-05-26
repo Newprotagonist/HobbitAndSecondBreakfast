@@ -11,34 +11,9 @@
   align-items: center;
   font-family: 'Tangerine';
   text-align: center;
-}
-
-.title h1 {
-  font-size: 200px;
-  font-family: 'Tangerine';
-}
-
-.mainbutton {
-  margin: 0 auto;
-  width: fit-content;
-    a {
-      background-color: $brown;
-      color: $light-beige;
-      font-family: 'Tangerine';
-      font-size: 70px;
-      border-radius: 7px;
-      text-decoration: none;
-      padding: 20px 30px;
-    }
-
-}
+  font-size: 8vw;
+ }
 
 .page {
   min-height: calc(100vh - 50px - 258px);
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 50px;
 }

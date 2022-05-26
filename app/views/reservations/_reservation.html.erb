@@ -15,6 +15,8 @@
   </div>
 <% end %>
 <br>
+Title: <%= reservation.title %>
+<br>
 Start date: <%= reservation.start_date %>
 <br>
 End date: <%= reservation.end_date %>
@@ -27,6 +29,6 @@ Status: <%= reservation.status %>
   <%= link_to "Accept", accept_reservation_path(reservation), data: {turbo_method: :post}, class: "button-normal" %>
   <%= link_to "Decline", decline_reservation_path(reservation), data: {turbo_method: :post}, class: "button-normal" %>
 <% else %>
-  <%= link_to "Edit reservation", edit_reservation_path(reservation), class: "button-normal" %>
+  <%= link_to "Edit reservation", edit_offer_reservation_path(reservation.offer, reservation), class: "button-normal" %>
   <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal" %>
 <% end %>
