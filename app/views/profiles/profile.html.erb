@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-9 show-container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="show-h1"><%= @user.first_name %> <%= @user.last_name %></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 show-p">
+              <div class="p-2">
+                <% if @user.hobbit %>
+                  <h2>Hobbit</h2>
+                <% end %>
+                <h2> Reviews: <%= @user.reviews %></h2>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card mt-3">
+              <p class="map-p"> 📍 Shire</p>
+              <img src="https://lotro.gamepressure.com/gfx/228474889.jpg" alt="map of Shire">
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
