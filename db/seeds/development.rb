@@ -26,9 +26,41 @@ Offer.all.each do |offer|
     title: "Quest to destroy the Ring",
     offer: offer,
     user: gandalf,
-    start_date: Date.today,
-    end_date: Date.today + 20,
-    total_price: offer.price * 20
+    start_date: Date.parse("29 July 1954"),
+    end_date: Date.parse("20 October 1955"),
+    total_price: offer.price * 20,
+    status: "Accepted"
+  )
+end
+
+Reservation.all.each do |reservation|
+  hobbit = reservation.offer.user
+  wizard = reservation.user
+  Review.create!(
+    giver: hobbit,
+    receiver: wizard,
+    reservation: reservation,
+    content: Faker::Fantasy::Tolkien.poem,
+    rating: rand(0..5.0).round(1)
+  )
+  Review.create!(
+    giver: wizard,
+    receiver: hobbit,
+    reservation: reservation,
+    content: Faker::Fantasy::Tolkien.poem,
+    rating: rand(0..5.0).round(1)
+  )
+  reservation.update!(status: "Done")
+end
+
+Offer.all.sample(3).each do |offer|
+  Reservation.create(
+    title: "Quest to eat the third breakfast",
+    offer: offer,
+    user: gandalf,
+    start_date: Date.today - 1,
+    end_date: Date.today + 9,
+    total_price: offer.price * 10
   )
 end
 
