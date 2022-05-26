@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profiles/profile'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
   post "reservations/:id/decline", to: "reservations#decline", as: :decline_reservation
   # Defines the root path route ("/")
   # root "articles#index"
+  get "/profile", to: "profiles#profile"
 end
