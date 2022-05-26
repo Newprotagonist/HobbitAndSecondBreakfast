@@ -28,3 +28,42 @@
   opacity: 0.8;
   color: $dark-beige;
 }
+
+.accept {
+  width: fit-content;
+  background-color: $green;
+  color: $light-beige;
+  font-family: 'Merienda', cursive;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.decline {
+  width: fit-content;
+  background-color: $dark-red;
+  color: $light-beige;
+  font-family: 'Merienda', cursive;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.card-buttons div {
+  margin-bottom: 35px;
+  margin-left: 30px;
+}
+
+.card-buttons {
+  align-items: center;
+  margin-top: 20px;
+}
