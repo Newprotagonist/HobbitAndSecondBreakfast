@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-12 col-md-6 form">
-      <div class="form-control">
+
+    <div class="col-12 col-md-6 form-text form">
         <%= simple_form_for(@offer) do |f| %>
           <%= f.input :location %>
           <%= f.input :price %>
           <%= f.input :summary %>
-          <%= f.input :photos, as: :file, input_html: { multiple: true } %>>
-          <%= f.submit %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          <%= f.button :submit, class: "button-normal" %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>

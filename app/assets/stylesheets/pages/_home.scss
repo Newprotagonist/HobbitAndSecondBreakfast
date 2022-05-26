@@ -1,29 +1,41 @@
 // Specific CSS for your home-page
-.banner {
+.homepage {
   background-image: asset-url('background.jpg') ;
   background-size: cover;
-  height: 50em;
+  height: 100%;
+  padding: 20px;
 }
 
-.banner h1 {
+.title {
   color: $light-beige;
-  font-size: 190px;
+  align-items: center;
   font-family: 'Tangerine';
   text-align: center;
-  padding-top: 0.5em;
 }
 
-.banner a {
-  background-color: $brown;
-  color: $light-beige;
+.title h1 {
+  font-size: 200px;
   font-family: 'Tangerine';
-  font-size: 50px;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
 }
 
-.see-all {
-  width: 300px;
+.mainbutton {
+  margin: 0 auto;
+  width: fit-content;
+    a {
+      background-color: $brown;
+      color: $light-beige;
+      font-family: 'Tangerine';
+      font-size: 70px;
+      border-radius: 7px;
+      text-decoration: none;
+      padding: 20px 30px;
+    }
+
+}
+
+
+.button {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
 }
