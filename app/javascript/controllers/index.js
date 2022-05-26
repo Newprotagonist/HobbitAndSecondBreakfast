@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FilterController from "./filter_controller.js"
+application.register("filter", FilterController)
+
 import FlatpickrController from "./flatpickr_controller.js"
 application.register("flatpickr", FlatpickrController)
 
