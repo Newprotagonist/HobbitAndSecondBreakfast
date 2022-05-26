@@ -1,6 +1,12 @@
 <div class="row index-title mx-auto mb-5 pt-3">
   <h1>Choose your Hobbit !</h1>
 </div>
+<%= form_with do |f| %>
+Filter by :
+  Price <%= f.number_field :offer_price, in: 0..1000, step: 10%>
+  Location <%= f.collection_select :offer_location, Offer.order(:location), :id, :location  %>
+<% end %>
+
 <div class="row">
   <% @offers.each do |offer| %>
     <div class="col-sm-12 col-md-6 col-lg-3">
