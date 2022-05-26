@@ -1,13 +1,12 @@
 class ProfilesController < ApplicationController
-  before_action :set_user
+  skip_after_action :verify_authorized
 
   def profile
-    skip_authorization
+    @user = current_user
   end
 
-  private
-
-  def set_user
-    @user = current_user
+  def other
+    @user = User.find(params[:id])
+    render template: "profiles/profile"
   end
 end

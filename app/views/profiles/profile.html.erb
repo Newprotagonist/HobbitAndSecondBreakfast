@@ -15,7 +15,15 @@
                 <% if @user.hobbit %>
                   <h2>Hobbit</h2>
                 <% end %>
-                <h2> Reviews: <%= @user.reviews %></h2>
+                <h2>Reviews:</h2>
+
+                <% @user.reviews_as_receiver.each do |review| %>
+                  <div class="review">
+                    From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %>
+                    Content: <%= review.content %>
+                    Rating: <%= review.rating %>
+                  </div>
+                <% end %>
               </div>
           </div>
         </div>

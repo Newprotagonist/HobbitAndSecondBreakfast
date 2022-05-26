@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post "reservations/:id/accept", to: "reservations#accept", as: :accept_reservation
   post "reservations/:id/decline", to: "reservations#decline", as: :decline_reservation
   get "/profile", to: "profiles#profile"
+  get "/profiles/:id", to: "profiles#other"
 end
