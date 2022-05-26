@@ -8,6 +8,6 @@ export default class extends Controller {
   }
 
   display() {
-    this.valueTarget.innerText = `${this.priceTarget.value}`
+    this.valueTarget.innerText = `${this.priceTarget.value} `
   }
 }
