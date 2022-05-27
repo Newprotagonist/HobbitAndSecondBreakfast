@@ -1,5 +1,6 @@
 <div class="card-title">
   <%= link_to "Reservation ##{reservation.id}", reservation_path(reservation) %>
+  <p>Title: <%= reservation.title %></p>
 </div>
 <div class="reservation-card">
   <% if current_user.hobbit %>
@@ -33,23 +34,3 @@
       <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal" %>
     <% end %>
   </div>
-<br>
-Title: <%= reservation.title %>
-<br>
-Start date: <%= reservation.start_date %>
-<br>
-End date: <%= reservation.end_date %>
-<br>
-Price: <%= reservation.total_price %>
-<br>
-Status: <%= reservation.status %>
-<br>
-<div>
-  <% if current_user.hobbit %>
-    <%= link_to "Accept", accept_reservation_path(reservation), data: {turbo_method: :post}, class: "button-normal" %>
-    <%= link_to "Decline", decline_reservation_path(reservation), data: {turbo_method: :post}, class: "button-normal" %>
-  <% else %>
-    <%= link_to "Edit reservation", edit_offer_reservation_path(reservation.offer, reservation), class: "button-normal" %>
-    <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal" %>
-  <% end %>
-</div>
