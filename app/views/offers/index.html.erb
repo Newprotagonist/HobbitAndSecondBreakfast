@@ -57,7 +57,16 @@
                 <i class="fa-solid fa-coins"></i> <%= offer.price %> golds per day
               </div>
               <div>
-                Average rating: <%= offer.user.reviews_as_receiver.average(:rating) %>/5
+                <% if offer.user.reviews_as_receiver.average(:rating) %>
+                  <% offer.user.reviews_as_receiver.average(:rating).truncate.times do %>
+                    <i class="fa-solid fa-star"></i>
+                  <% end %>
+                  <% (5 - offer.user.reviews_as_receiver.average(:rating).truncate).times do %>
+                    <i class="fa-solid fa-star empty"></i>
+                  <% end %>
+                <% else %>
+                  <p>No rating yet</p>
+                <% end %>
               </div>
             </div>
             <div class="summary mt-1 pt-1">
