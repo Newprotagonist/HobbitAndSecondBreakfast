@@ -1,6 +1,26 @@
 <div class="container">
+  <div class="dropend">
+    <button class="dropdown-toggle edit" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Filter By
+    </button>
+    <ul class="dropdown-menu form">
+          <ul class='list-group list-group-horizontal'>
+            <%= form_with url: reservations_path, method: :get do |f| %>
+              <li class="list-group-item">
+                <%= f.label :reservation_status, "Status " %>
+                <br>
+                <%= f.collection_select :reservation_status, current_user.reservations.uniq { |i| i.status }, :status, :status, :include_blank => true  %>
+              </li>
+              <li class="list-group-item">
+                <%= f.submit "Apply Filter", class:"edit" %> <%= link_to "Remove Filter", reservations_path, class:"edit" %>
+              </li>
+            <% end %>
+          </ul>
+    </ul>
+  </div>
   <div class="row index-title mx-auto mb-5 pt-3 d-flex justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-6">
+
       <% if @reservations.empty? %>
         <div class="container">
           <div class="row mx-auto">
