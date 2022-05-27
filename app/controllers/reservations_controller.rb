@@ -23,9 +23,9 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.offer = @offer
     @reservation.user = current_user
-    @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
     authorize @reservation
     if @reservation.save!
+      @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @offer.price
       redirect_to reservations_path
     else
       render :new, status: :unprocessable_entity
