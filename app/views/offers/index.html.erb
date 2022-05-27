@@ -3,31 +3,30 @@
     <h1>Choose your Hobbit !</h1>
   </div>
 </div>
-<div class="row mx-auto mb-5 pt-3 form col-sm-6">
-  <div class="form-text" data-controller="filter">
-    <%= form_with url: offers_path, method: :get do |f| %>
-    <h4>Filter by</h4>
-    <div class="d-flex">
-      <div>
-        <div class="d-flex">
-          <p><%= f.label :offer_price, "Max Price :" %> <span class="filter-price" data-filter-target="value">0 </span><i class="fa-solid fa-coins filter-price"></i></p>
-        </div>
-        <%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%>
-      </div>
-      <div>
-        <div>
-          <%= f.label :offer_location, "Choose location " %> <i class="fa-solid fa-map"></i>
-        </div>
-        <%= f.collection_select :offer_location, Offer.order(:location), :id, :location, :include_blank => true  %>
-      </div>
-    </div>
 
-      <%= f.submit "Apply Filter", class:"button-normal-a button-normal" %>
-  <% end %>
-  </div>
+<div class="dropend">
+    <button class="dropdown-toggle button-filter" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Filter By
+    </button>
+  <ul class="dropdown-menu">
+          <ul class='list-group list-group-horizontal'>
+            <%= form_with url: offers_path, method: :get do |f| %>
+              <li class="list-group-item" data-controller="filter">
+                <%= f.label :offer_price, "Max Price :" %> <span class="filter-price" data-filter-target="value">0 </span><i class="fa-solid fa-coins filter-price"></i>
+                <%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%>
+              </li>
+              <li class="list-group-item">
+                <%= f.label :offer_location, "Location " %> <i class="fa-solid fa-map"></i>
+                <%= f.collection_select :offer_location, Offer.order(:location), :id, :location, :include_blank => true  %>
+              </li>
+              <li class="list-group-item"><%= f.submit "Apply Filter" %></li>
+              <li class="list-group-item"><%= link_to "Remove Filter", offers_path %></li>
+            <% end %>
+          </ul>
+    </ul>
 </div>
 
-
+<% console %>
 <%if @offers == [] %>
   <div class="container">
     <p class="no-reservation">No results found</p>

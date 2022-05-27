@@ -79,3 +79,17 @@
 .button-link:hover {
   color: $dark-red;
 }
+
+.button-filter {
+  width: fit-content;
+  background-color: $light-brown;
+  color: $light-beige;
+  font-family: 'Merienda', cursive;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  margin: 5px;
+}
