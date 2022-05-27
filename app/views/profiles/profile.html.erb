@@ -18,10 +18,20 @@
                 <h2 class="mt-4 review-h">Reviews:</h2>
 
                 <% @user.reviews_as_receiver.each do |review| %>
-                  <div class="review-list">
-                    <p><strong>From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %></strong> </p>
+                  <div>
+                    <% if review.rating %>
+                      <% review.rating.truncate.times do %>
+                        <i class="fa-solid fa-star"></i>
+                      <% end %>
+                      <% (5 - review.rating.truncate).times do %>
+                        <i class="fa-solid fa-star empty-profile"></i>
+                      <% end %>
+                    <% else %>
+                      <p>No rating yet</p>
+                    <% end %>
+                    <p class="border-bottom-brown mb-1"><strong>From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %></strong> </p>
+                    <p class="mt-0 mb-1">Rating: <%= review.rating %></p>
                     <p class="show-p">Content: <%= review.content %></p>
-                    <p>Rating: <%= review.rating %></p>
                   </div>
                 <% end %>
               </div>
