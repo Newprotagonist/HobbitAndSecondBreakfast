@@ -2,13 +2,13 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params[:offer_price].present? || params[:offer_location].present?
+    if params[:offer_price].present? || params[:offer_location].present? || params[:offer_rating].present?
       if params[:offer_price].to_i.zero? && params[:offer_location].present?
-        @offers = policy_scope(Offer).where(id: params[:offer_location])
+        @offers = policy_scope(Offer).where(location: params[:offer_location])
       elsif !params[:offer_price].to_i.zero? && !params[:offer_location].present?
         @offers = policy_scope(Offer).where("price < ?", params[:offer_price])
       else
-        @offers = policy_scope(Offer).where(id: params[:offer_location]).where("price < ?", params[:offer_price])
+        @offers = policy_scope(Offer).where(location: params[:offer_location]).where("price < ?", params[:offer_price])
       end
     else
       @offers = policy_scope(Offer)
