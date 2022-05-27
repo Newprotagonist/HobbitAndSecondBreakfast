@@ -8,24 +8,26 @@
     <button class="dropdown-toggle edit" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       Filter By
     </button>
-  <ul class="dropdown-menu form dropdown-elements">
-          <ul class='list-group list-group-horizontal'>
-            <%= form_with url: offers_path, method: :get do |f| %>
-              <li class="list-group-item" data-controller="filter">
-                <%= f.label :offer_price, "Max Price :" %> <span class="filter-price" data-filter-target="value">0 </span><i class="fa-solid fa-coins filter-price"></i>
-                <br>
-                <%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%>
-              </li>
-              <li class="list-group-item">
-                <%= f.label :offer_location, "Location " %> <i class="fa-solid fa-map"></i>
-                <br>
-                <%= f.collection_select :offer_location, Offer.all, :location, :location, :include_blank => true  %>
-              </li>
-              <li class="list-group-item">
-                <%= f.submit "Apply Filter", class:"edit" %> <%= link_to "Remove Filter", offers_path, class:"edit" %>
-              </li>
-            <% end %>
-          </ul>
+    <ul class="dropdown-menu form dropdown-elements">
+      <ul class='list-group list-group-horizontal'>
+          <%= form_with url: offers_path, method: :get do |f| %>
+        <div class="dropdrop">
+            <li class="list-group-item" data-controller="filter">
+              <%= f.label :offer_price, "Max Price :" %> <span class="filter-price" data-filter-target="value">0 </span><i class="fa-solid fa-coins filter-price"></i>
+              <br>
+              <%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%>
+            </li>
+            <li class="list-group-item">
+              <%= f.label :offer_location, "Location " %> <i class="fa-solid fa-map"></i>
+              <br>
+              <%= f.collection_select :offer_location, Offer.all, :location, :location, :include_blank => true  %>
+            </li>
+            <li class="list-group-item">
+              <%= f.submit "Apply Filter", class:"edit", id:"no-margin" %> <%= link_to "Remove Filter", offers_path, class:"edit", id:"no-margin" %>
+            </li>
+          <% end %>
+        </div>
+      </ul>
     </ul>
 </div>
 
