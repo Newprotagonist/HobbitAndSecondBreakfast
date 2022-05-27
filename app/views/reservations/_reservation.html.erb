@@ -33,11 +33,9 @@
       <% end %>
     <% else %>
       <% unless reservation.started? or reservation.over? %>
-      <%= link_to "Edit reservation", edit_offer_reservation_path(reservation.offer, reservation), class: "button-normal" %>
-      <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal" %>
+      <%= link_to "Edit reservation", edit_offer_reservation_path(reservation.offer, reservation), class: "button-normal button-normal-a" %>
+      <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal button-normal-a" %>
       <% end %>
       </div>
     <% end %>
 </div>
-
-
