@@ -25,6 +25,7 @@
     <div class="row">
       <div class="col-12">
         <h1 class="show-h1"><%= @offer.user.first_name %> <%= @offer.user.last_name %></h1>
+        <p class="m-3 button-profile"><i class="fa-solid fa-user"></i><%= link_to "Check #{@offer.user.first_name}'s profile", see_profile_path(@offer.user), class: "button-profile" %></p>
       </div>
     </div>
     <div class="row">
