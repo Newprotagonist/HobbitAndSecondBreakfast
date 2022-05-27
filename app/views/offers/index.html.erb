@@ -9,17 +9,16 @@
     <h4>Filter by</h4>
     <div class="d-flex">
       <div>
-        <div class="m-3">
+        <div class="d-flex">
           <p><%= f.label :offer_price, "Max Price :" %> <span class="filter-price" data-filter-target="value">0 </span><i class="fa-solid fa-coins filter-price"></i></p>
-          <p><%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%></p>
         </div>
+        <%= f.range_field :offer_price, in: 0..1000, step: 50, data: {filter_target: "price", action: "filter#display"}%>
       </div>
-
-      <div class="m-3">
-        <div class="mb-3">
+      <div>
+        <div>
           <%= f.label :offer_location, "Choose location " %> <i class="fa-solid fa-map"></i>
         </div>
-        <p><%= f.collection_select :offer_location, Offer.order(:location), :id, :location, :include_blank => true  %></p>
+        <%= f.collection_select :offer_location, Offer.order(:location), :id, :location, :include_blank => true  %>
       </div>
     </div>
 
