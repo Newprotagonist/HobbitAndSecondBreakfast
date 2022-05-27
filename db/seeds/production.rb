@@ -32,7 +32,7 @@ Offer.all.each do |offer|
     start_date: Date.parse("29 July 1954"),
     end_date: Date.parse("20 October 1955"),
     total_price: offer.price * 20,
-    status: "Accepted"
+    status: "Done"
   )
 end
 
@@ -52,9 +52,8 @@ Reservation.all.each do |reservation|
     receiver: hobbit,
     reservation: reservation,
     content: "% 10s" % Faker::Fantasy::Tolkien.poem,
-    rating: rand(2..4.5).round(1)
+    rating: rand(2..5).round(1)
   )
-  reservation.update!(status: "Done")
 end
 
 # create non-reviewed but reviewable reservations
@@ -67,7 +66,7 @@ Offer.all.sample(3).each do |offer|
     start_date: Date.today - 7,
     end_date: Date.today - 2,
     total_price: offer.price * 5,
-    status: "Accepted"
+    status: "Done"
   )
   reservation.save(validate: false)
 end
@@ -80,7 +79,8 @@ Offer.all.sample(3).each do |offer|
     user: gandalf,
     start_date: Date.today - 1,
     end_date: Date.today + 9,
-    total_price: offer.price * 10
+    total_price: offer.price * 10,
+    status: "Accepted"
   )
 end
 

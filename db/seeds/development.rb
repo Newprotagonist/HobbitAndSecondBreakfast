@@ -32,7 +32,7 @@ Offer.all.each do |offer|
     start_date: Date.parse("29 July 1954"),
     end_date: Date.parse("20 October 1955"),
     total_price: offer.price * 20,
-    status: "Accepted"
+    status: "Done"
   )
 end
 
