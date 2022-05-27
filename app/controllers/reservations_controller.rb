@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   def index
     @reservations = policy_scope(Reservation)
     @reservations.each do |reservation|
-      reservation.status = "Done" if reservation.status == "Accepted" and reservation.over?
+      reservation.update(status: "Done") if reservation.status == "Accepted" and reservation.over?
     end
   end
 

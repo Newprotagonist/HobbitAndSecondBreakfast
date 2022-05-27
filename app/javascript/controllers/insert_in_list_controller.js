@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-in-list"
 export default class extends Controller {
-  static targets = ["items", "form"];
+  static targets = ["items", "form", "container"];
 
   connect() {
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content")
@@ -22,6 +22,7 @@ export default class extends Controller {
           this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
         }
         this.formTarget.outerHTML = data.form
+        this.containerTarget.style.display = "none"
       })
   }
 }

@@ -10,8 +10,8 @@
       <%= render partial: "reviews/review", locals: {review: review} %>
     </div>
     <% end %>
-    <% if !current_user.reviewed?(@reservation) and @reservation.over? and @reservation.accepted? %>
+  </div>
+  <% if !current_user.reviewed?(@reservation) and @reservation.over? %>
       <%= render partial: "reviews/form", locals: { reservation: @reservation, review: @review } %>
     <% end %>
-  </div>
 </div>
