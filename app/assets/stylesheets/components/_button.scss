@@ -69,3 +69,13 @@
   align-items: center;
   margin-top: 20px;
 }
+
+.button-profile {
+  font-size: 20px;
+  margin: 10px;
+  color: $brown;
+}
+
+.button-profile:hover {
+  color: $dark-red;
+}
