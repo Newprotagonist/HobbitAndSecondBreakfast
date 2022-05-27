@@ -47,9 +47,11 @@
             <p><%= @offer.summary %></p>
             <div class="d-flex">
               <% if  @user == @offer.user %>
-                <%= link_to "Edit this offer", edit_offer_path(@offer), class: "edit-button" %>
-                <%= link_to "Delete this offer", offer_path(@offer),  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
+              <div>
+                <%= link_to "Edit this offer", edit_offer_path(@offer), class: "edit" %>
+                <%= link_to "Delete this offer", offer_path(@offer), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"},
                 class: "decline" %>
+              </div>
               <% else %>
                 <% if !current_user&.hobbit %>
                   <%= link_to "Reserve", new_offer_reservation_path(@offer), class: "button-normal-a button-normal" %>
