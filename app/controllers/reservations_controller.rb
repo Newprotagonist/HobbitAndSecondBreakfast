@@ -3,7 +3,11 @@ class ReservationsController < ApplicationController
   before_action :set_offer, only: %i[new create]
 
   def index
-    @reservations = policy_scope(Reservation)
+    if params[:reservation_status]
+      @reservations = policy_scope(Reservation).where(status: params[:reservation_status])
+    else
+      @reservations = policy_scope(Reservation)
+    end
     @reservations.each do |reservation|
       reservation.update(status: "Done") if reservation.status == "Accepted" and reservation.over?
     end

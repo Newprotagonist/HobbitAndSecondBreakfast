@@ -5,14 +5,14 @@
     </button>
     <ul class="dropdown-menu form">
           <ul class='list-group list-group-horizontal'>
-            <%= form_with url: offers_path, method: :get do |f| %>
+            <%= form_with url: reservations_path, method: :get do |f| %>
               <li class="list-group-item">
                 <%= f.label :reservation_status, "Status " %>
                 <br>
-                <%= f.collection_select :reservation_status, @reservations, :status, :status, :include_blank => true  %>
+                <%= f.collection_select :reservation_status, current_user.reservations.uniq { |i| i.status }, :status, :status, :include_blank => true  %>
               </li>
               <li class="list-group-item">
-                <%= f.submit "Apply Filter", class:"edit" %> <%= link_to "Remove Filter", offers_path, class:"edit" %>
+                <%= f.submit "Apply Filter", class:"edit" %> <%= link_to "Remove Filter", reservations_path, class:"edit" %>
               </li>
             <% end %>
           </ul>

@@ -19,7 +19,7 @@
               <li class="list-group-item">
                 <%= f.label :offer_location, "Location " %> <i class="fa-solid fa-map"></i>
                 <br>
-                <%= f.collection_select :offer_location, Offer.all, :location, :location, :include_blank => true  %>
+                <%= f.collection_select :offer_location, Offer.all.uniq { |o| o.location }, :location, :location, :include_blank => true  %>
               </li>
               <li class="list-group-item">
                 <%= f.submit "Apply Filter", class:"edit" %> <%= link_to "Remove Filter", offers_path, class:"edit" %>
