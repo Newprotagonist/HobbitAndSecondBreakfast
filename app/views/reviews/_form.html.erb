@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-6 form-text form">
-        <%= simple_form_for(@review, url: reservation_reviews_path, data: { controller: "filter" }) do |f| %>
+        <%= simple_form_for([reservation, review], data: { controller: "filter", insert_in_list_target: "form", action: "submit->insert-in-list#send" }) do |f| %>
           <%= f.input :content %>
           <%= f.input :rating, as: :range, label: "Rating: <span data-filter-target='value'>0</span>".html_safe, input_html: { min: 0, max: 5, step: 0.1, value: 0, data: {filter_target: "price", action: "filter#display"} } %>
           <%= f.button :submit, class: "button-normal" %>
