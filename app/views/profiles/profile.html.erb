@@ -7,6 +7,11 @@
               <%= cl_image_tag @user.photo.key, crop: :fill, class: "profile-picture" %>
             <% end %>
             <h1 class="show-h1"><%= @user.first_name %> <%= @user.last_name %></h1>
+            <% if @id == current_user.id %>
+          <div class="edit-profile-button">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "edit" %>
+          </div>
+            <% end %>
           </div>
         </div>
         <div class="row">
@@ -16,7 +21,7 @@
                 <h3 class="m-3"><i class="fa-solid fa-user"></i> Hobbit</h3>
                 <% end %>
                 <% if @user.reviews_as_receiver.present? %>
-                  <h2 class="mt-4 review-h">Reviews:</h2>
+                  <h2 class="mt-4 review-h">Reviews from users:</h2>
                 <% else %>
                   <h4 class="mt-4 mb-3">No reviews yet.</h4>
                 <% end %>
@@ -41,10 +46,6 @@
               </div>
           </div>
         </div>
-
-        <% if @id == current_user.id %>
-          <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal button-normal-a" %>
-        <% end %>
       </div>
   </div>
 </div>
