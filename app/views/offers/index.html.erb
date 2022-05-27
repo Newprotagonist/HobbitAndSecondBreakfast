@@ -28,38 +28,43 @@
 </div>
 
 
-
-<div class="row">
-  <% @offers.each do |offer| %>
-    <div class="col-sm-12 col-md-6 col-lg-3">
-      <div class="card mx-auto my-2" style="width: 300px; overflow: hidden;">
-        <div class="picture row align-items-center">
-          <% if !offer.photos.empty? %>
-            <%= cl_image_tag offer.photos[0].key%>
-          <% else %>
-            <%= image_tag ('no-picture.gif') %>
-            <p>No pictures found</p>
-          <% end %>
-        </div>
-        <div class="card-body">
-          <div class="card-title pb-2">
-            <%= link_to "#{offer.user[:first_name]} #{offer.user[:last_name]}", offer_path(offer) %>
+<%if @offers == [] %>
+  <div class="container">
+    <p class="no-reservation">No results found</p>
+  </div>
+<% else %>
+  <div class="row">
+    <% @offers.each do |offer| %>
+      <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="card mx-auto my-2" style="width: 300px; overflow: hidden;">
+          <div class="picture row align-items-center">
+            <% if !offer.photos.empty? %>
+              <%= cl_image_tag offer.photos[0].key%>
+            <% else %>
+              <%= image_tag ('no-picture.gif') %>
+              <p>No pictures found</p>
+            <% end %>
           </div>
-          <div>
-            <div>
-              <i class="fa-solid fa-map"></i> <%= offer.location %>
+          <div class="card-body">
+            <div class="card-title pb-2">
+              <%= link_to "#{offer.user[:first_name]} #{offer.user[:last_name]}", offer_path(offer) %>
             </div>
             <div>
-              <i class="fa-solid fa-coins"></i> <%= offer.price %> golds per day
+              <div>
+                <i class="fa-solid fa-map"></i> <%= offer.location %>
+              </div>
+              <div>
+                <i class="fa-solid fa-coins"></i> <%= offer.price %> golds per day
+              </div>
+              <div>
+                Average rating: <%= offer.user.reviews_as_receiver.average(:rating) %>/5
+              </div>
             </div>
-            <div>
-              Average rating: <%= offer.user.reviews_as_receiver.average(:rating) %>/5
+            <div class="summary mt-1 pt-1">
+              <em><%= offer.summary[0,50] %>...</em>
             </div>
           </div>
-          <div class="summary mt-1 pt-1">
-            <em><%= offer.summary[0,50] %>...</em>
-          </div>
-        </div>
-    </div>
-</div>
+      </div>
+  </div>
+  <% end %>
 <% end %>
