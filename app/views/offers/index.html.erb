@@ -50,7 +50,10 @@
               <i class="fa-solid fa-map"></i> <%= offer.location %>
             </div>
             <div>
-              <i class="fa-solid fa-coins"></i> <%= offer.price %> golds / per day
+              <i class="fa-solid fa-coins"></i> <%= offer.price %> golds per day
+            </div>
+            <div>
+              Average rating: <%= offer.user.reviews_as_receiver.average(:rating) %>/5
             </div>
           </div>
           <div class="summary mt-1 pt-1">

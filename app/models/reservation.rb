@@ -14,6 +14,10 @@ class Reservation < ApplicationRecord
     end_date <= Date.today
   end
 
+  def started?
+    start_date <= Date.today
+  end
+
   private
 
   def end_date_is_after_start_date

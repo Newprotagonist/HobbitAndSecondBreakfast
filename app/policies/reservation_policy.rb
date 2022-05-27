@@ -3,9 +3,10 @@ class ReservationPolicy < ApplicationPolicy
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       if user.hobbit
-        scope.joins("JOIN offers ON offers.id = reservations.offer_id WHERE offers.user_id = #{user.id}")
+        # scope.joins("JOIN offers ON offers.id = reservations.offer_id WHERE offers.user_id = #{user.id}").order(:created_at)
+        scope.joins(:offer).where("offers.user_id": user.id).order(:created_at)
       else
-        scope.where(user: user)
+        scope.where(user: user).order(:created_at)
       end
     end
   end
