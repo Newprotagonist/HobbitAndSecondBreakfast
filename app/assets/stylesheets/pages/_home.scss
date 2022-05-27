@@ -2,8 +2,9 @@
 .homepage {
   background-image: asset-url('background.jpg') ;
   background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
-  padding: 20px;
+  padding-bottom: 80px;
 }
 
 .title {
@@ -11,10 +12,51 @@
   align-items: center;
   font-family: 'Tangerine';
   text-align: center;
-  font-size: 8vw;
+  font-size: 120px;
+  padding-top: 20px;
  }
 
 .page {
-  min-height: calc(100vh - 50px - 258px);
+  min-height: calc(100vh - 80px - 258px);
   justify-content: center;
+}
+
+#homepage-button {
+  display: flex;
+  justify-content: center;
+
+}
+@media (max-width: 960px) {
+  /* Pour un écran < 540px, cette classe CSS s'applique */
+  .homepage {
+    padding-bottom: 120px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  #homepage-button {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 720px) {
+  /* Pour un écran < 540px, cette classe CSS s'applique */
+  .homepage {
+    padding-bottom: 95px;
+  }
+}
+
+@media (max-width: 540px) {
+  /* Pour un écran < 540px, cette classe CSS s'applique */
+  .homepage {
+    padding-bottom: 120px;
+  }
+
+  .title {
+    font-size: 70px;
+  }
+
+
 }
