@@ -40,5 +40,7 @@ Layout/LineLength:
   Max: 120
 Style/EmptyMethod:
   Enabled: false
+Style/QuotedSymbols:
+  Enabled: false
 Bundler/OrderedGems:
   Enabled: false
