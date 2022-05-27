@@ -11,11 +11,14 @@ class ReviewsController < ApplicationController
     @review.giver = current_user
     @review.receiver = current_user.hobbit ? @review.reservation.user : @review.reservation.offer.user
     authorize @review
-    if !current_user.reviewed?(@review.reservation) and @review.save!
-      @review.reservation.status = "Done"
-      redirect_to reservation_path(@review.reservation)
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if !current_user.reviewed?(@review.reservation) and @review.save!
+        format.html { redirect_to reservation_path(@review.reservation) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
     end
   end
 

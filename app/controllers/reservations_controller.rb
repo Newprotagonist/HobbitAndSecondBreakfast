@@ -4,9 +4,13 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = policy_scope(Reservation)
+    @reservations.each do |reservation|
+      reservation.status = "Done" if reservation.status == "Accepted" and reservation.over?
+    end
   end
 
   def show
+    @review = Review.new(reservation: @reservation)
     authorize @reservation
   end
 

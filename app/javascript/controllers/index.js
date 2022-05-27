@@ -13,5 +13,8 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import InsertInListController from "./insert_in_list_controller.js"
+application.register("insert-in-list", InsertInListController)
+
 import TotalPriceController from "./total_price_controller.js"
 application.register("total-price", TotalPriceController)
