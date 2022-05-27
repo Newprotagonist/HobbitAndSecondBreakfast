@@ -3,7 +3,7 @@
     <%= render partial: "reservation", locals: { offer: @reservation.offer, reservation: @reservation } %>
   </div>
   <div data-controller="insert-in-list">
-    <div class="reviews card-container" data-insert-in-list-target="items">
+    <div class="reviews card-container review-card" data-insert-in-list-target="items">
     <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" if @reservation.done? %>
     <% @reservation.reviews.each do |review| %>
       <div class="review">
