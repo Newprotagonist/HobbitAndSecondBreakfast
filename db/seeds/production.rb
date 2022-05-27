@@ -1,13 +1,16 @@
 require "faker"
 
 # create hobbit users and their respective offers
+
+locations = ["The Shire", "Minas Tirith"]
+
 User.all.each do |hobbit|
   summary = ""
   10.times do
     summary << "#{Faker::Fantasy::Tolkien.poem}\n"
   end
   Offer.create!(
-    location: Faker::Movies::LordOfTheRings.location,
+    location: location.sample,
     price: rand(75..120),
     summary: summary,
     user: hobbit
@@ -44,7 +47,7 @@ Reservation.all.each do |reservation|
     giver: hobbit,
     receiver: wizard,
     reservation: reservation,
-    content: "% 10s" % Faker::Fantasy::Tolkien.poem,
+    content: "Gandalf is the best. He's never late.",
     rating: 5
   )
   Review.create!(
@@ -71,8 +74,8 @@ Offer.all.sample(3).each do |offer|
   reservation.save(validate: false)
 end
 
-# create non-reviewed reservations
-Offer.all.sample(3).each do |offer|
+# create accepted and ongoing reservations
+Offer.all.sample(2).each do |offer|
   Reservation.create(
     title: "Quest to eat the third breakfast",
     offer: offer,
