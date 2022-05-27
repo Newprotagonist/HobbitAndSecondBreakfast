@@ -1,20 +1,26 @@
-<% if @reservations.empty? %>
-  <div class="container">
-    <div class="row mx-auto">
-      <p class="no-reservation">No Reservations Yet</p>
-      <%= image_tag ('no-picture.gif') %>
+<div class="container">
+  <div class="row index-title mx-auto mb-5 pt-3">
+    <div class="col-sm-12">
+      <% if @reservations.empty? %>
+        <div class="container">
+          <div class="row mx-auto">
+            <p class="no-reservation">No Reservations Yet</p>
+            <%= image_tag ('no-picture.gif') %>
+          </div>
+        </div>
+      <% else %>
+        <div class="row mx-auto reservation-index">
+          <h1>Your Reservations</h1>
+          <h2><em>Total Price: <%= @reservations.sum(:total_price) %></em></h2>
+        </div>
+          <% @reservations.each do |reservation| %>
+          <div class="reservation-list">
+            <div class="card">
+              <%= render partial: "reservation", locals: { offer: reservation.offer, reservation: reservation } %>
+            </div>
+          </div>
+          <% end %>
+      <% end %>
     </div>
   </div>
-<% else %>
-  <div class="row mx-auto reservation-index">
-    <h1>Your Reservations</h1>
-    <h2><em>Total Price: <%= @reservations.sum(:total_price) %></em></h2>
-  </div>
-    <% @reservations.each do |reservation| %>
-    <div class="reservation-list">
-      <div class="card-container">
-        <%= render partial: "reservation", locals: { offer: reservation.offer, reservation: reservation } %>
-      </div>
-    </div>
-    <% end %>
-<% end %>
+</div>
