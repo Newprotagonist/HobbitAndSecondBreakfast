@@ -15,7 +15,11 @@
                 <% if @user.hobbit %>
                 <h3 class="m-3"><i class="fa-solid fa-user"></i> Hobbit</h3>
                 <% end %>
-                <h2 class="mt-4 review-h">Reviews:</h2>
+                <% if @user.reviews_as_receiver.present? %>
+                  <h2 class="mt-4 review-h">Reviews:</h2>
+                <% else %>
+                  <h4 class="mt-4 mb-3">No reviews yet.</h4>
+                <% end %>
 
                 <% @user.reviews_as_receiver.each do |review| %>
                   <div>
@@ -38,7 +42,9 @@
           </div>
         </div>
 
-        <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal button-normal-a" %>
+        <% if @id == current_user.id %>
+          <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal button-normal-a" %>
+        <% end %>
       </div>
   </div>
 </div>

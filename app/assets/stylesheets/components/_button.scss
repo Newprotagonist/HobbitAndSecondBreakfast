@@ -80,9 +80,9 @@
   color: $dark-red;
 }
 
-.button-filter {
+.edit {
   width: fit-content;
-  background-color: $light-brown;
+  background-color: $blue;
   color: $light-beige;
   font-family: 'Merienda', cursive;
   font-size: 15px;
@@ -90,6 +90,14 @@
   padding: 10px;
   border-radius: 5px;
   border: none;
+  text-decoration: none;
   text-align: center;
-  margin: 5px;
+  margin-bottom: 30px;
+  &:hover {
+    color: $yellow;
+  }
+}
+
+.edit a {
+  margin-bottom: 30px;
 }

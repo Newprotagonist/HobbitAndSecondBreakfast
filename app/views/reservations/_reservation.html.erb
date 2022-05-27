@@ -1,27 +1,32 @@
 <div class="card-title">
   <%= link_to "Reservation ##{reservation.id}", reservation_path(reservation) %>
-  <p>Title: <%= reservation.title %></p>
+  <p><%= reservation.title %></p>
 </div>
 <div class="reservation-card">
   <% if current_user.hobbit %>
-    <div class="client">
-      <%= "#{reservation.user.first_name} #{reservation.user.last_name}" %>
+    <div class="">
+      <p><%= link_to "#{reservation.user.first_name} #{reservation.user.last_name}", see_profile_path(reservation.user_id) %></p>
+      <% if reservation.user.photo.attached? %>
+        <%= cl_image_tag reservation.user.photo.key, class: "card-photo" %>
+      <% else %>
+        <%= image_tag ('no-picture.gif'), class: "card-photo"%>
+        <p>No pictures found</p>
+      <% end %>
     </div>
   <% else %>
-    <div class="picture row align-items-center">
-      <%= link_to "#{reservation.offer.user.first_name} #{reservation.offer.user.last_name}", offer_path(reservation.offer) %>
-      <% if !reservation.offer.photos.empty? %>
-        <%= cl_image_tag reservation.offer.photos[0].key %>
+    <div>
+      <p><%= link_to "#{reservation.offer.user.first_name} #{reservation.offer.user.last_name}", offer_path(reservation.offer) %></p>
+      <% if !current_user.hobbit and !reservation.offer.photos.empty? %>
+        <%= cl_image_tag reservation.offer.photos[0].key, class: "card-photo" %>
       <% else %>
-        <%= image_tag ('no-picture.gif') %>
+        <%= image_tag ('no-picture.gif'), class: "card-photo"%>
         <p>No pictures found</p>
       <% end %>
     </div>
   <% end %>
   <div class="infos">
-    <p>Title: <%= reservation.title %></p>
-    <p>Start date: <%= reservation.start_date %></p>
-    <p>End date: <%= reservation.end_date %></p>
+    <p>Start date: <%= reservation.start_date.strftime("%B %-d, %Y") %></p>
+    <p>End date: <%= reservation.end_date.strftime("%B %-d, %Y") %></p>
     <p>Price: <%= reservation.total_price %></p>
     <p>Status: <%= reservation.status %></p>
   </div>
@@ -35,11 +40,13 @@
           <div class="no-buttons"></div>
       <% end %>
     <% else %>
-      <% unless reservation.started? or reservation.over? %>
-      <%= link_to "Edit reservation", edit_offer_reservation_path(reservation.offer, reservation), class: "button-normal button-normal-a" %>
-      <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal button-normal-a" %>
-
+      <% if !reservation.started? and !reservation.over? %>
+      <div class="card-buttons">
+        <div><%= link_to "Edit", edit_offer_reservation_path(reservation.offer, reservation), class: "edit" %></div>
+        <div><%= link_to "Cancel", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "decline" %></div>
+      </div>
+      <% else %>
+        <div class="no-buttons"></div>
       <% end %>
-        </div>
     <% end %>
 </div>

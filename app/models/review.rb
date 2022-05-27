@@ -11,6 +11,6 @@ class Review < ApplicationRecord
   private
 
   def check
-    errors.add(:reservation, "can't be reviewed") unless reservation.over? and reservation.accepted?
+    errors.add(:reservation, "can't be reviewed") unless reservation.done?
   end
 end
