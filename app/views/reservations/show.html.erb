@@ -1,18 +1,24 @@
-<div class="reservation-list">
-  <div class="card-container">
-    <%= render partial: "reservation", locals: { offer: @reservation.offer, reservation: @reservation } %>
-  </div>
-  <div data-controller="insert-in-list">
-    <div class="reviews card-container" data-insert-in-list-target="items">
-    <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" if @reservation.done? %>
-    <% @reservation.reviews.each do |review| %>
-      <div class="review">
-        <%= render partial: "reviews/review", locals: {review: review} %>
+<div class="container">
+  <div class="row index-title mx-auto mb-5 pt-3">
+    <div class="col-sm-12">
+      <div class="reservation-list card">
+        <div>
+          <%= render partial: "reservation", locals: { offer: @reservation.offer, reservation: @reservation } %>
+        </div>
+        <div data-controller="insert-in-list">
+          <div class="reviews" data-insert-in-list-target="items">
+          <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" if @reservation.done? %>
+          <% @reservation.reviews.each do |review| %>
+            <div class="review">
+              <%= render partial: "reviews/review", locals: {review: review} %>
+            </div>
+          <% end %>
+          </div>
+          <% if !current_user.reviewed?(@reservation) and @reservation.over? %>
+              <%= render partial: "reviews/form", locals: { reservation: @reservation, review: @review } %>
+          <% end %>
+        </div>
       </div>
-    <% end %>
     </div>
-    <% if !current_user.reviewed?(@reservation) and @reservation.over? %>
-        <%= render partial: "reviews/form", locals: { reservation: @reservation, review: @review } %>
-      <% end %>
   </div>
 </div>
