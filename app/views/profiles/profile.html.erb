@@ -42,7 +42,9 @@
           </div>
         </div>
 
-        <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal button-normal-a" %>
+        <% if @id == current_user.id %>
+          <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal button-normal-a" %>
+        <% end %>
       </div>
   </div>
 </div>
