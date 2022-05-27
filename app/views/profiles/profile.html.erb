@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-12">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+              <%= cl_image_tag @user.photo.key, crop: :fill, class: "profile-picture" %>
             <% end %>
             <h1 class="show-h1"><%= @user.first_name %> <%= @user.last_name %></h1>
           </div>
@@ -13,15 +13,29 @@
           <div class="col-12 show-p">
               <div class="p-2">
                 <% if @user.hobbit %>
-                  <h2>Hobbit</h2>
+                <h3 class="m-3"><i class="fa-solid fa-user"></i> Hobbit</h3>
                 <% end %>
-                <h2>Reviews:</h2>
+                <% if @user.reviews_as_receiver.present? %>
+                  <h2 class="mt-4 review-h">Reviews:</h2>
+                <% else %>
+                  <h4 class="mt-4 mb-3">No reviews yet.</h4>
+                <% end %>
 
                 <% @user.reviews_as_receiver.each do |review| %>
-                  <div class="review">
-                    From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %>
-                    Content: <%= review.content %>
-                    Rating: <%= review.rating %>
+                  <div>
+                    <% if review.rating %>
+                      <% review.rating.truncate.times do %>
+                        <i class="fa-solid fa-star"></i>
+                      <% end %>
+                      <% (5 - review.rating.truncate).times do %>
+                        <i class="fa-solid fa-star empty-profile"></i>
+                      <% end %>
+                    <% else %>
+                      <p>No rating yet</p>
+                    <% end %>
+                    <p class="border-bottom-brown mb-1"><strong>From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %></strong> </p>
+                    <p class="mt-0 mb-1">Rating: <%= review.rating %></p>
+                    <p class="show-p">Content: <%= review.content %></p>
                   </div>
                 <% end %>
               </div>
@@ -29,17 +43,6 @@
         </div>
 
         <%= link_to "Edit profile", edit_user_registration_path, class: "button-normal button-normal-a" %>
-
-        <%# This is the map  %>
-        <div class="row">
-          <div class="col">
-            <div class="card mt-3">
-              <p class="map-p"> 📍 Shire</p>
-              <img src="https://lotro.gamepressure.com/gfx/228474889.jpg" alt="map of Shire">
-            </div>
-          </div>
-        </div>
-
       </div>
   </div>
 </div>

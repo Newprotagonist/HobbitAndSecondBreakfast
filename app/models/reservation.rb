@@ -21,10 +21,15 @@ class Reservation < ApplicationRecord
   private
 
   def end_date_is_after_start_date
-    return if end_date.blank? || start_date.blank?
+    if end_date.blank?
+      errors.add(:end_date, "cannot be blank")
+    end
+    if start_date.blank?
+      errors.add(:start_date, "cannot be blank")
+    end
 
-    return unless end_date < start_date
-
-    errors.add(:end_date, "cannot be before the start date")
+    if end_date < start_date
+      errors.add(:end_date, "cannot be before the start date")
+    end
   end
 end

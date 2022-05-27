@@ -1,9 +1,25 @@
-.top {
-
-
-}
-
 .edit-button {
   color: ;
   text-decoration: none;
+}
+
+.profile-picture {
+  height: auto;
+  width: 100%;
+}
+
+.review-h {
+  font-family: 'Merienda', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.empty-profile {
+  -webkit-text-stroke: 1px $brown;
+  color: $light-gray;
+}
+
+.border-bottom-brown {
+  border-top: 0.5px solid $brown;
 }
