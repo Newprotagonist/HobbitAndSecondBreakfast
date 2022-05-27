@@ -1,17 +1,18 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
-<div><%= render partial: "reservation", locals: { reservation: @reservation } %></div>
-<%= link_to "Leave a review ", new_reservation_review_path(@reservation) if !current_user.reviewed?(@reservation) and @reservation.over? and @reservation.accepted? %>
-<div data-controller="insert-in-list">
-  <div class="reviews" data-insert-in-list-target="items">
-  <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" %>
-    <% @reservation.reviews.each do |review| %>
-    <div class="review">
-      <%= render partial: "reviews/review", locals: {review: review} %>
-    </div>
-    <% end %>
+<div class="reservation-list">
+  <div class="card-container">
+    <%= render partial: "reservation", locals: { offer: @reservation.offer, reservation: @reservation } %>
   </div>
-  <% if !current_user.reviewed?(@reservation) and @reservation.over? %>
-      <%= render partial: "reviews/form", locals: { reservation: @reservation, review: @review } %>
+  <div data-controller="insert-in-list">
+    <div class="reviews card-container" data-insert-in-list-target="items">
+    <%= @reservation.reviews.empty? ? "No reviews yet" : "Reviews:" if @reservation.done? %>
+    <% @reservation.reviews.each do |review| %>
+      <div class="review">
+        <%= render partial: "reviews/review", locals: {review: review} %>
+      </div>
     <% end %>
+    </div>
+    <% if !current_user.reviewed?(@reservation) and @reservation.over? %>
+        <%= render partial: "reviews/form", locals: { reservation: @reservation, review: @review } %>
+      <% end %>
+  </div>
 </div>

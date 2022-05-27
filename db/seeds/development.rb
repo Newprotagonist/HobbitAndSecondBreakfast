@@ -32,7 +32,7 @@ Offer.all.each do |offer|
     start_date: Date.parse("29 July 1954"),
     end_date: Date.parse("20 October 1955"),
     total_price: offer.price * 20,
-    status: "Accepted"
+    status: "Done"
   )
 end
 
@@ -45,14 +45,14 @@ Reservation.all.each do |reservation|
     receiver: wizard,
     reservation: reservation,
     content: "% 10s" % Faker::Fantasy::Tolkien.poem,
-    rating: rand(0..5.0).round(1)
+    rating: rand(0..5)
   )
   Review.create!(
     giver: wizard,
     receiver: hobbit,
     reservation: reservation,
     content: "% 10s" % Faker::Fantasy::Tolkien.poem,
-    rating: rand(0..5.0).round(1)
+    rating: rand(0..5)
   )
   reservation.update!(status: "Done")
 end
