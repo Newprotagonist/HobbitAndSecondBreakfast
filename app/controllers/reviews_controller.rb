@@ -7,7 +7,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.reservation = Reservation.find(params[:reservation_id])
+    @reservation = Reservation.find(params[:reservation_id])
+    @review.reservation = @reservation
     @review.giver = current_user
     @review.receiver = current_user.hobbit ? @review.reservation.user : @review.reservation.offer.user
     authorize @review

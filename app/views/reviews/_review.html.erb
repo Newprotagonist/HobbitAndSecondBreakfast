@@ -1,5 +1,12 @@
 <p>
   From: <%= "#{review.giver.first_name} #{review.giver.last_name.chr}." %>
-  Rating: <%= review.rating %>
+  <br>
+  Rating: <% review.rating.truncate.times do %>
+                        <i class="fa-solid fa-star"></i>
+                      <% end %>
+                      <% (5 - review.rating.truncate).times do %>
+                        <i class="fa-solid fa-star empty-profile"></i>
+                      <% end %>
+  <br>
   <%= review.content %>
 </p>

@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-6 form form-text">
+      <h1>Your reservation</h1>
       <%= simple_form_for([@offer, @reservation], data: { "controller": "total-price flatpickr" }) do |form| %>
         <%= form.input :title %>
         <%= form.input :start_date, as: :string, html5: true, input_html: { min: Date.today, data: {total_price_target: "start", action: "total-price#calc", flatpickr_target: 'input' } } %>
         <%= form.input :end_date, as: :string, html5: true, input_html: { min: Date.tomorrow, data: {total_price_target: "end", action: "total-price#calc", flatpickr_target: 'input' }} %>
         <div>
-          Price per day: <span data-total-price-target="daily"><%= @offer.price %></span>
+          <h2 class="form-text form-text-bigger"><i class="fa-solid fa-coins"></i> Price per day: <span data-total-price-target="daily"><%= @offer.price %></span> golds</h2>
           <br>
-          Total price: <span data-total-price-target="total"><%= @reservation.total_price or 0 %></span>
+          <h2 class="form-text form-text-bigger"><i class="fa-solid fa-coins"></i> Total price: <span data-total-price-target="total"><%= @reservation.total_price or 0 %></span> golds</h2>
         </div>
-        <%= form.button :submit, class: "button-normal button-normal-a" %>
+        <%= form.button :submit, class: "button-normal button-normal-a mt-3" %>
       <% end %>
     </div>
   </div>
