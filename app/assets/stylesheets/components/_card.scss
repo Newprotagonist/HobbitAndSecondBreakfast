@@ -71,6 +71,12 @@ padding: 10px;
 }
 
 .card-photo {
+  background-size: cover ;
   height: 130px;
   width: 130px;
+  border-radius: 5px;
+}
+
+.review-card {
+  margin-top: 20px;
 }
