@@ -31,7 +31,18 @@
     <div class="row">
       <div class="col-12 show-p">
           <div class="p-2">
-            <p>Average rating: <%= @offer.user.reviews_as_receiver.average(:rating) %>/5</p>
+            <p>Average rating: <%= @offer.user.reviews_as_receiver.average(:rating) %>
+            <% if @offer.user.reviews_as_receiver.average(:rating) %>
+                  <% @offer.user.reviews_as_receiver.average(:rating).truncate.times do %>
+                    <i class="fa-solid fa-star star-show"></i>
+                  <% end %>
+                  <% (5 - @offer.user.reviews_as_receiver.average(:rating).truncate).times do %>
+                    <i class="fa-solid fa-star empty-show"></i>
+                  <% end %>
+                <% else %>
+                  <p>No rating yet</p>
+                <% end %>
+            </p>
             <p> <i class="fa-solid fa-coins"></i> <%= @offer.price %> golds / day</p>
             <p><%= @offer.summary %></p>
             <div class="d-flex">
