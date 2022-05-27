@@ -10,6 +10,10 @@ class Reservation < ApplicationRecord
     status == "Accepted"
   end
 
+  def done?
+    status == "Done"
+  end
+
   def over?
     end_date <= Date.today
   end
