@@ -24,15 +24,17 @@
     <p>Price: <%= reservation.total_price %></p>
     <p>Status: <%= reservation.status %></p>
   </div>
-  <% if reservation.status == "Pending" %>
     <% if current_user.hobbit %>
+      <% if reservation.status == "Pending" and !reservation.started? %>
       <div class="card-buttons">
         <div><%= link_to "Accept", accept_reservation_path(reservation), data: {turbo_method: :post}, class:"accept" %></div>
         <div><%= link_to "Decline", decline_reservation_path(reservation), data: {turbo_method: :post}, class:"decline" %></div>
+      <% end %>
     <% else %>
+      <% unless reservation.started? or reservation.over? %>
       <%= link_to "Edit reservation", edit_offer_reservation_path(reservation.offer, reservation), class: "button-normal" %>
       <%= link_to "Cancel reservation", reservation_path(reservation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-normal" %>
+      <% end %>
       </div>
     <% end %>
-  <% end %>
 </div>
